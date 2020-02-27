@@ -1,6 +1,6 @@
-# cool-dns #
+# cool-dns.cyber.dhs.gov #
 
-[![GitHub Build Status](https://github.com/cisagov/cool-dns/workflows/build/badge.svg)](https://github.com/cisagov/cool-dns/actions)
+[![GitHub Build Status](https://github.com/cisagov/cool-dns.cyber.dhs.gov/workflows/build/badge.svg)](https://github.com/cisagov/cool-dns.cyber.dhs.gov/actions)
 
 This is a generic skeleton project that can be used to quickly get a
 new [cisagov](https://github.com/cisagov) [Terraform
@@ -18,7 +18,7 @@ details on Terraform modules and the standard module structure.
 
 ```hcl
 module "example" {
-  source = "github.com/cisagov/cool-dns"
+  source = "github.com/cisagov/cool-dns.cyber.dhs.gov"
 
   aws_region            = "us-west-1"
   aws_availability_zone = "b"
@@ -33,7 +33,7 @@ module "example" {
 
 ## Examples ##
 
-* [Deploying into the default VPC](https://github.com/cisagov/cool-dns/tree/develop/examples/default_vpc)
+* [Deploying into the default VPC](https://github.com/cisagov/cool-dns.cyber.dhs.gov/tree/develop/examples/default_vpc)
 
 ## Inputs ##
 

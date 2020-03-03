@@ -1,8 +1,3 @@
-data "aws_caller_identity" "current" {}
-
-locals {
-  caller_user_name = split("/", data.aws_caller_identity.current.arn)[1]
-}
 
 provider "aws" {
   region = var.aws_region
@@ -24,6 +19,15 @@ provider "aws" {
   region = var.aws_region
   assume_role {
     role_arn     = aws_iam_role.route53resourcechange_role.arn
+    session_name = local.caller_user_name
+  }
+}
+
+provider "aws" {
+  alias  = "organizationsreadonly"
+  region = var.aws_region
+  assume_role {
+    role_arn     = data.terraform_remote_state.master.outputs.organizationsreadonly_role.arn
     session_name = local.caller_user_name
   }
 }

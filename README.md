@@ -39,7 +39,7 @@ module "example" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
-| aws_region | The AWS Service endpoint to communicate with. | `string` | `us-east-1` | no |
+| aws_region | The AWS region to communicate with. | `string` | `us-east-1` | no |
 | route53resourcechange_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify resource records in the DNS zone. | `string` | `Allows sufficient permissions to modify resource records in the DNS zone.` | no |
 | route53resourcechange_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify resource records in the DNS zone. | `string` | `Route53ResourceChange-cyber.dhs.gov` | no |
 | tags | Tags to apply to all AWS resources created | `map(string)` | `{"Application": "COOL - DNS cyber.dhs.gov", "Team": "VM Fusion - Development", "Workspace": "production"}` | no |

@@ -11,7 +11,7 @@
 # ------------------------------------------------------------------------------
 
 variable "aws_region" {
-  description = "The AWS Service endpoint to communicate with."
+  description = "The AWS region to communicate with."
   default     = "us-east-1"
 }
 
@@ -20,7 +20,7 @@ variable "tags" {
   description = "Tags to apply to all AWS resources created"
   default = {
     Team        = "VM Fusion - Development"
-    Application = "COOL - DNS cyber.dhs.gov"
+    Application = "COOL - DNS - cyber.dhs.gov"
     Workspace   = "production"
   }
 }

@@ -1,39 +1,16 @@
-# cool-dns.cyber.dhs.gov #
+# cool-dns-cyber.dhs.gov #
 
-[![GitHub Build Status](https://github.com/cisagov/cool-dns.cyber.dhs.gov/workflows/build/badge.svg)](https://github.com/cisagov/cool-dns.cyber.dhs.gov/actions)
+[![GitHub Build Status](https://github.com/cisagov/cool-dns-cyber.dhs.gov/workflows/build/badge.svg)](https://github.com/cisagov/cool-dns-cyber.dhs.gov/actions)
 
-This is a generic skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) [Terraform
-module](https://www.terraform.io/docs/modules/index.html) GitHub
-repository started.  This skeleton project contains [licensing
-information](LICENSE), as well as [pre-commit
-hooks](https://pre-commit.com) and
-[GitHub Actions](https://github.com/features/actions) configurations
-appropriate for the major languages that we use.
-
-See [here](https://www.terraform.io/docs/modules/index.html) for more
-details on Terraform modules and the standard module structure.
+This repository contains a Terraform configuration that will provision the DNS zone
+`cyber.dhs.gov` within the COOL.  It creates an IAM role that allows sufficient
+permissions to modify resources records in this zone.  This role has a trust
+relationship with the users account.
 
 ## Usage ##
 
-```hcl
-module "example" {
-  source = "github.com/cisagov/cool-dns.cyber.dhs.gov"
-
-  aws_region            = "us-west-1"
-  aws_availability_zone = "b"
-  subnet_id             = "subnet-0123456789abcdef0"
-
-  tags = {
-    Key1 = "Value1"
-    Key2 = "Value2"
-  }
-}
-```
-
-## Examples ##
-
-* [Deploying into the default VPC](https://github.com/cisagov/cool-dns.cyber.dhs.gov/tree/develop/examples/default_vpc)
+1. Run the command `terraform init`.
+1. Run the command `terraform apply`.
 
 ## Inputs ##
 

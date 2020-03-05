@@ -20,7 +20,7 @@ variable "tags" {
   description = "Tags to apply to all AWS resources created"
   default = {
     Team        = "VM Fusion - Development"
-    Application = "COOL - DNS cyber.dhs.gov"
+    Application = "COOL - DNS - cyber.dhs.gov"
     Workspace   = "production"
   }
 }

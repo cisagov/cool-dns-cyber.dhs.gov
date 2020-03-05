@@ -1,7 +1,11 @@
-# This DNS record gives Amazon Certificate Manager permission to
+# ------------------------------------------------------------------------------
+# Resource records that support the Rules cloudfront endpoints and application.
+# ------------------------------------------------------------------------------
+
+# This record gives Amazon Certificate Manager permission to
 # generate certificates for rules.ncats.cyber.dhs.gov
 resource "aws_route53_record" "root_acm_rules_CNAME" {
-  provider = aws.resource_change_role
+  provider = aws.route53resourcechange
 
   name = "_724d852f42d6b10ed1c6ab4135301ef6.rules.ncats.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
@@ -13,7 +17,7 @@ resource "aws_route53_record" "root_acm_rules_CNAME" {
 }
 
 resource "aws_route53_record" "rules_ncats_A" {
-  provider = aws.resource_change_role
+  provider = aws.route53resourcechange
 
   alias {
     name                   = "d35iq78wt3hgdh.cloudfront.net."
@@ -26,7 +30,7 @@ resource "aws_route53_record" "rules_ncats_A" {
 }
 
 resource "aws_route53_record" "rules_ncats_AAAA" {
-  provider = aws.resource_change_role
+  provider = aws.route53resourcechange
 
   alias {
     name                   = "d35iq78wt3hgdh.cloudfront.net."

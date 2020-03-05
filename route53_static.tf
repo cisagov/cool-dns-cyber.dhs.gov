@@ -1,9 +1,9 @@
 # ------------------------------------------------------------------------------
-# Static records
+# Resource records that are considered mostly static and tightly coupled to the zone.
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "root_CAA" {
-  provider = aws.resource_change_role
+  provider = aws.route53resourcechange
 
   name = aws_route53_zone.cyber_dhs_gov.name
   records = [
@@ -18,11 +18,11 @@ resource "aws_route53_record" "root_CAA" {
 }
 
 # ------------------------------------------------------------------------------
-# Records for email routing and security.
+# Resource records for email routing and security for the zone root.
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "root_MX" {
-  provider = aws.resource_change_role
+  provider = aws.route53resourcechange
 
   name    = aws_route53_zone.cyber_dhs_gov.name
   records = ["10 inbound-smtp.us-east-1.amazonaws.com"]
@@ -32,7 +32,7 @@ resource "aws_route53_record" "root_MX" {
 }
 
 resource "aws_route53_record" "root_SPF" {
-  provider = aws.resource_change_role
+  provider = aws.route53resourcechange
 
   name    = aws_route53_zone.cyber_dhs_gov.name
   records = ["v=spf1 include:amazonses.com -all"]
@@ -42,7 +42,7 @@ resource "aws_route53_record" "root_SPF" {
 }
 
 resource "aws_route53_record" "mail_MX" {
-  provider = aws.resource_change_role
+  provider = aws.route53resourcechange
 
   name    = "mail.${aws_route53_zone.cyber_dhs_gov.name}"
   records = ["10 feedback-smtp.us-east-1.amazonses.com"]
@@ -52,7 +52,7 @@ resource "aws_route53_record" "mail_MX" {
 }
 
 resource "aws_route53_record" "mail_SPF" {
-  provider = aws.resource_change_role
+  provider = aws.route53resourcechange
 
   name    = "mail.${aws_route53_zone.cyber_dhs_gov.name}"
   records = ["v=spf1 include:amazonses.com -all"]
@@ -62,7 +62,7 @@ resource "aws_route53_record" "mail_SPF" {
 }
 
 resource "aws_route53_record" "_dmarc_TXT" {
-  provider = aws.resource_change_role
+  provider = aws.route53resourcechange
 
   name    = "_dmarc.${aws_route53_zone.cyber_dhs_gov.name}"
   records = ["v=DMARC1; p=reject; sp=reject; adkim=s; aspf=r; rua=mailto:reports@dmarc.cyber.dhs.gov; rf=afrf; pct=100; ri=86400"]
@@ -72,7 +72,7 @@ resource "aws_route53_record" "_dmarc_TXT" {
 }
 
 resource "aws_route53_record" "_amazonses_TXT" {
-  provider = aws.resource_change_role
+  provider = aws.route53resourcechange
 
   name    = "_amazonses.${aws_route53_zone.cyber_dhs_gov.name}"
   records = ["tOxXTap6jGLn6/VnBnget7lrXW+TxZTyTdOhm8LbM/Y="]

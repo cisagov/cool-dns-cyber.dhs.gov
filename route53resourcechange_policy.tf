@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
-# Create the IAM policy that allows all of the EC2 and KMS actions necessary
-# to create an AMI in the Images account.
+# Create the IAM policy that allows all of the route53 actions necessary to create and
+# modify resource records in the cyber.dhs.gov zone.
 # ------------------------------------------------------------------------------
 
 data "aws_iam_policy_document" "route53resourcechange_doc" {
@@ -24,7 +24,7 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
 }
 
 resource "aws_iam_policy" "route53resourcechange_policy" {
-  provider = aws.dns_provision_role
+  provider = aws.dnsprovisionaccount
 
   description = var.route53resourcechange_role_description
   name        = var.route53resourcechange_role_name

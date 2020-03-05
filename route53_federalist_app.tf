@@ -1,9 +1,9 @@
 # ------------------------------------------------------------------------------
-# Create records for Federalist site cloudfront endpoints.
+# Resource records that support Federalist site cloudfront endpoints and application.
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "root_A" {
-  provider = aws.resource_change_role
+  provider = aws.route53resourcechange
 
   alias {
     name                   = "d3nie9z8rrasif.cloudfront.net."
@@ -16,7 +16,7 @@ resource "aws_route53_record" "root_A" {
 }
 
 resource "aws_route53_record" "root_AAAA" {
-  provider = aws.resource_change_role
+  provider = aws.route53resourcechange
 
   alias {
     name                   = "d3nie9z8rrasif.cloudfront.net."

@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
-# Create the IAM role that allows all of the route53 actions necessary to
-# modify resource records in the DNS zone.
+# Create the IAM role that allows all of the route53 actions necessary to modify
+# resource records in the DNS zone.
 # ------------------------------------------------------------------------------
 
 resource "aws_iam_role" "route53resourcechange_role" {

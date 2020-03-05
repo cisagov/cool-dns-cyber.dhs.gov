@@ -11,7 +11,7 @@
 # ------------------------------------------------------------------------------
 
 variable "aws_region" {
-  description = "The AWS service endpoint to communicate with."
+  description = "The AWS region to communicate with."
   default     = "us-east-1"
 }
 

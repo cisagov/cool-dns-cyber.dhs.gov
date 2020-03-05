@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
-# Create the IAM policy that allows all of the route53 actions necessary to create add
-# and modify resource records in the cyber.dhs.gov zone.
+# Create the IAM policy that allows all of the route53 actions necessary to create and
+# modify resource records in the cyber.dhs.gov zone.
 # ------------------------------------------------------------------------------
 
 data "aws_iam_policy_document" "route53resourcechange_doc" {

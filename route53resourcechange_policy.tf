@@ -28,6 +28,7 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
   statement {
     actions = [
       "route53:ListHostedZones",
+      "route53:ListTagsForResource",
     ]
 
     resources = ["*"]

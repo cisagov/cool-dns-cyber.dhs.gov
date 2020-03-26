@@ -7,8 +7,8 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
   statement {
     actions = [
       "route53:ChangeResourceRecordSets",
-      "route53:ListResourceRecordSets",
       "route53:GetHostedZone",
+      "route53:ListResourceRecordSets",
     ]
 
     resources = ["arn:aws:route53:::hostedzone/${aws_route53_zone.cyber_dhs_gov.id}"]

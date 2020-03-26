@@ -21,6 +21,17 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
 
     resources = ["arn:aws:route53:::change/*"]
   }
+
+  # This permission allows us to search the hosted zones to find the
+  # public zone corresponding to cyber.dhs.gov.  Often we need to
+  # locate the zone and grab its ID before we can add records to it.
+  statement {
+    actions = [
+      "route53:ListHostedZones",
+    ]
+
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_policy" "route53resourcechange_policy" {

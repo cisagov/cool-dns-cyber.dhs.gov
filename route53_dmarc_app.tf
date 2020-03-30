@@ -1,19 +1,23 @@
 # ------------------------------------------------------------------------------
-# Resource records that support the DMARC application.
-# ------------------------------------------------------------------------------
-
-# ------------------------------------------------------------------------------
 # Evaluate expressions for use throughout this file.
 # ------------------------------------------------------------------------------
 locals {
   dmarc_domain_name = "dmarc.${aws_route53_zone.cyber_dhs_gov.name}"
 }
 
+# ------------------------------------------------------------------------------
+# Generation of the domain identity token in SES.
+# ------------------------------------------------------------------------------
+
 resource "aws_ses_domain_identity" "dmarc_identity" {
   provider = aws.route53resourcechange
 
   domain = local.dmarc_domain_name
 }
+
+# ------------------------------------------------------------------------------
+# Resource records that support the DMARC application.
+# ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "dmarc_MX" {
   provider = aws.route53resourcechange

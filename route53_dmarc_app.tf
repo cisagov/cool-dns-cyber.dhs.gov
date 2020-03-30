@@ -16,7 +16,7 @@ resource "aws_route53_record" "_amazonses_dmarc_TXT" {
   provider = aws.route53resourcechange
 
   name    = "_amazonses.dmarc.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["CV4Ex6gYlJutTAnA8xkQa0hk3toSRuFvmibJ0sRiAWw="]
+  records = ["OHUkpPtvpdayRxxI15t6tGA38DHwt+JnJ1jpaAE4Sa8="]
   ttl     = 60
   type    = "TXT"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id

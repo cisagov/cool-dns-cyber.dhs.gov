@@ -6,7 +6,7 @@ locals {
 }
 
 # ------------------------------------------------------------------------------
-# Generation of the domain identity token in SES.
+# Generation of the domain identity token and DKIM keys in SES.
 # ------------------------------------------------------------------------------
 
 resource "aws_ses_domain_identity" "dmarc_identity" {

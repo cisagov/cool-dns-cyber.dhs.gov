@@ -91,7 +91,7 @@ resource "aws_route53_record" "_amazonses_TXT" {
   provider = aws.route53resourcechange
 
   name    = "_amazonses.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["${aws_ses_domain_identity.cyhy_dhs_gov_identity.verification_token}"]
+  records = [aws_ses_domain_identity.cyhy_dhs_gov_identity.verification_token]
   ttl     = 60
   type    = "TXT"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id

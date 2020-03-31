@@ -39,7 +39,7 @@ resource "aws_route53_record" "_amazonses_dmarc_TXT" {
   provider = aws.route53resourcechange
 
   name    = "_amazonses.${local.dmarc_domain_name}"
-  records = ["${aws_ses_domain_identity.dmarc_identity.verification_token}"]
+  records = [aws_ses_domain_identity.dmarc_identity.verification_token]
   ttl     = 60
   type    = "TXT"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id

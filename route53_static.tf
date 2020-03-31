@@ -100,9 +100,10 @@ resource "aws_route53_record" "_amazonses_TXT" {
 resource "aws_route53_record" "dkim_CNAME" {
   provider = aws.route53resourcechange
 
-  count   = 3
-  name    = "${element(aws_ses_domain_dkim.cyber_dhs_gov_dkim.dkim_tokens, count.index)}._domainkey.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["${element(aws_ses_domain_dkim.cyber_dhs_gov_dkim.dkim_tokens, count.index)}.dkim.amazonses.com"]
+  for_each = toset(aws_ses_domain_dkim.cyber_dhs_gov_dkim.dkim_tokens)
+
+  name    = "${each.key}._domainkey.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["${each.key}.dkim.amazonses.com"]
   ttl     = "600"
   type    = "CNAME"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id

@@ -25,7 +25,9 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
   statement {
     actions = [
       "ses:DeleteIdentity",
+      "ses:GetIdentityDkimAttributes",
       "ses:GetIdentityVerificationAttributes",
+      "ses:VerifyDomainDkim",
       "ses:VerifyDomainIdentity",
     ]
 

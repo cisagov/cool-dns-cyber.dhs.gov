@@ -18,6 +18,22 @@ resource "aws_route53_record" "root_CAA" {
 }
 
 # ------------------------------------------------------------------------------
+# Generation of the domain identity token and DKIM keys in SES.
+# ------------------------------------------------------------------------------
+
+resource "aws_ses_domain_identity" "cyhy_dhs_gov_identity" {
+  provider = aws.route53resourcechange
+
+  domain = aws_route53_zone.cyber_dhs_gov.name
+}
+
+resource "aws_ses_domain_dkim" "cyber_dhs_gov_dkim" {
+  provider = aws.route53resourcechange
+
+  domain = aws_ses_domain_identity.cyhy_dhs_gov_identity.domain
+}
+
+# ------------------------------------------------------------------------------
 # Resource records for email routing and security for the zone root.
 # ------------------------------------------------------------------------------
 
@@ -75,8 +91,20 @@ resource "aws_route53_record" "_amazonses_TXT" {
   provider = aws.route53resourcechange
 
   name    = "_amazonses.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["tOxXTap6jGLn6/VnBnget7lrXW+TxZTyTdOhm8LbM/Y="]
+  records = [aws_ses_domain_identity.cyhy_dhs_gov_identity.verification_token]
   ttl     = 60
   type    = "TXT"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "dkim_CNAME" {
+  provider = aws.route53resourcechange
+
+  for_each = toset(aws_ses_domain_dkim.cyber_dhs_gov_dkim.dkim_tokens)
+
+  name    = "${each.key}._domainkey.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["${each.key}.dkim.amazonses.com"]
+  ttl     = "600"
+  type    = "CNAME"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }

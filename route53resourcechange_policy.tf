@@ -21,6 +21,18 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
 
     resources = ["arn:aws:route53:::change/*"]
   }
+
+  statement {
+    actions = [
+      "ses:DeleteIdentity",
+      "ses:GetIdentityDkimAttributes",
+      "ses:GetIdentityVerificationAttributes",
+      "ses:VerifyDomainDkim",
+      "ses:VerifyDomainIdentity",
+    ]
+
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_policy" "route53resourcechange_policy" {

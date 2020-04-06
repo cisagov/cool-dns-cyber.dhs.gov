@@ -4,6 +4,11 @@
 # You must provide a value for each of these parameters.
 # ------------------------------------------------------------------------------
 
+variable "cyhy_account_id" {
+  type        = string
+  description = "The ID of the CyHy account."
+}
+
 # ------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 #
@@ -14,11 +19,6 @@ variable "aws_region" {
   type        = string
   description = "The AWS region to communicate with."
   default     = "us-east-1"
-}
-
-variable "cyhy_account_id" {
-  type        = string
-  description = "The ID of the CyHy account."
 }
 
 variable "tags" {

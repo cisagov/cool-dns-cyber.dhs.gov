@@ -17,8 +17,11 @@ relationship with the users account.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
 | aws_region | The AWS region to communicate with. | `string` | `us-east-1` | no |
+| cyhy_account_id | The ID of the CyHy account. | `string` | n/a | yes |
 | route53resourcechange_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify resource records in the DNS zone. | `string` | `Allows sufficient permissions to modify resource records in the DNS zone.` | no |
 | route53resourcechange_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify resource records in the DNS zone. | `string` | `Route53ResourceChange-cyber.dhs.gov` | no |
+| sessendemail_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions send email via AWS SES. | `string` | `Allows sufficient permissions to send email via AWS SES.` | no |
+| sessendemail_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES. | `string` | `SesSendEmail-cyber.dhs.gov` | no |
 | tags | Tags to apply to all AWS resources created | `map(string)` | `{"Application": "COOL - DNS - cyber.dhs.gov", "Team": "VM Fusion - Development", "Workspace": "production"}` | no |
 
 ## Outputs ##
@@ -27,6 +30,7 @@ relationship with the users account.
 |------|-------------|
 | cyber_dhs_gov_zone | The cyber.dhs.gov public hosted zone. |
 | route53resourcechange_role | IAM role that allows sufficient permissions to modify resource records in the cyber.dhs.gov zone. |
+| sessendemail_role | IAM role that allows sufficient permissions to send email via AWS SES. |
 
 ## Contributing ##
 

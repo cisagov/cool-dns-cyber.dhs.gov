@@ -7,3 +7,8 @@ output "route53resourcechange_role" {
   value       = aws_iam_role.route53resourcechange_role
   description = "IAM role that allows sufficient permissions to modify resource records in the cyber.dhs.gov zone."
 }
+
+output "sessendemail_role" {
+  value       = aws_iam_role.sessendemail_role
+  description = "IAM role that allows sufficient permissions to send email via AWS SES."
+}

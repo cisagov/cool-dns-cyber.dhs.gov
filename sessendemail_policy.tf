@@ -9,7 +9,7 @@ data "aws_iam_policy_document" "sessendemail_doc" {
     ]
 
     resources = [
-      aws_ses_domain_identity.cyhy_dhs_gov_identity.arn
+      aws_ses_domain_identity.cyhy_dhs_gov_identity.arn,
     ]
   }
 }

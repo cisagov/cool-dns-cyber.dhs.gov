@@ -26,12 +26,37 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
     actions = [
       "ses:DeleteIdentity",
       "ses:GetIdentityDkimAttributes",
+      "ses:GetIdentityNotificationAttributes",
       "ses:GetIdentityVerificationAttributes",
+      "ses:SetIdentityHeadersInNotificationsEnabled",
+      "ses:SetIdentityNotificationTopic",
       "ses:VerifyDomainDkim",
       "ses:VerifyDomainIdentity",
     ]
 
     resources = ["*"]
+  }
+
+  statement {
+    actions = [
+      "sns:*",
+    ]
+
+    resources = [
+      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:cyber_dhs_gov_bounce",
+      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:cyber_dhs_gov_complaint",
+      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:cyber_dhs_gov_delivery",
+    ]
+  }
+
+  statement {
+    actions = [
+      "sqs:*",
+    ]
+
+    resources = [
+      "arn:aws:sqs:${var.aws_region}:${local.dns_account_id}:cyber_dhs_gov_delivery",
+    ]
   }
 }
 

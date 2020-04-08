@@ -33,6 +33,68 @@ resource "aws_ses_domain_dkim" "cyber_dhs_gov_dkim" {
   domain = aws_ses_domain_identity.cyhy_dhs_gov_identity.domain
 }
 
+# cyber.dhs.gov bounce SNS
+resource "aws_sns_topic" "cyber_dhs_gov_bounce" {
+  provider = aws.route53resourcechange
+
+  name = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}bounce"
+  tags = var.tags
+}
+resource "aws_ses_identity_notification_topic" "cyber_dhs_gov_bounce" {
+  provider = aws.route53resourcechange
+
+  identity                 = aws_ses_domain_identity.cyhy_dhs_gov_identity.domain
+  include_original_headers = true
+  notification_type        = "Bounce"
+  topic_arn                = aws_sns_topic.cyber_dhs_gov_bounce.arn
+}
+
+# cyber.dhs.gov complaint SNS
+resource "aws_sns_topic" "cyber_dhs_gov_complaint" {
+  provider = aws.route53resourcechange
+
+  name = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}complaint"
+  tags = var.tags
+}
+resource "aws_ses_identity_notification_topic" "cyber_dhs_gov_complaint" {
+  provider = aws.route53resourcechange
+
+  identity                 = aws_ses_domain_identity.cyhy_dhs_gov_identity.domain
+  include_original_headers = true
+  notification_type        = "Complaint"
+  topic_arn                = aws_sns_topic.cyber_dhs_gov_complaint.arn
+}
+
+# cyber.dhs.gov delivery SNS
+resource "aws_sns_topic" "cyber_dhs_gov_delivery" {
+  provider = aws.route53resourcechange
+
+  name = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}delivery"
+  tags = var.tags
+}
+resource "aws_ses_identity_notification_topic" "cyber_dhs_gov_delivery" {
+  provider = aws.route53resourcechange
+
+  identity                 = aws_ses_domain_identity.cyhy_dhs_gov_identity.domain
+  include_original_headers = true
+  notification_type        = "Delivery"
+  topic_arn                = aws_sns_topic.cyber_dhs_gov_delivery.arn
+}
+resource "aws_sqs_queue" "cyber_dhs_gov_delivery" {
+  provider = aws.route53resourcechange
+
+  message_retention_seconds = 1209600
+  name                      = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}delivery"
+  tags                      = var.tags
+}
+resource "aws_sns_topic_subscription" "cyber_dhs_gov_bounce" {
+  provider = aws.route53resourcechange
+
+  endpoint  = aws_sqs_queue.cyber_dhs_gov_delivery.arn
+  protocol  = "sqs"
+  topic_arn = aws_sns_topic.cyber_dhs_gov_delivery.arn
+}
+
 # ------------------------------------------------------------------------------
 # Resource records for email routing and security for the zone root.
 # ------------------------------------------------------------------------------

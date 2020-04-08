@@ -33,6 +33,12 @@ resource "aws_ses_domain_dkim" "cyber_dhs_gov_dkim" {
   domain = aws_ses_domain_identity.cyhy_dhs_gov_identity.domain
 }
 
+# It would be nice to add aws_sns_topic_subscription resources for the
+# bounce and complaint email notifications below, but Terraform cannot
+# support that because such subscriptions must be approved out of
+# band.  See, for example, here:
+# https://www.terraform.io/docs/providers/aws/r/sns_topic_subscription.html#email
+
 # cyber.dhs.gov bounce SNS
 resource "aws_sns_topic" "cyber_dhs_gov_bounce" {
   provider = aws.route53resourcechange

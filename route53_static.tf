@@ -89,6 +89,7 @@ resource "aws_ses_identity_notification_topic" "cyber_dhs_gov_delivery" {
 resource "aws_sqs_queue" "cyber_dhs_gov_delivery" {
   provider = aws.route53resourcechange
 
+  # This is one fortnight (14 days)
   message_retention_seconds = 1209600
   name                      = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}delivery"
   tags                      = var.tags

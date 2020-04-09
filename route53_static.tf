@@ -90,7 +90,7 @@ resource "aws_sqs_queue" "cyber_dhs_gov_delivery" {
   provider = aws.route53resourcechange
 
   # This is one fortnight (14 days)
-  message_retention_seconds = 1209600
+  message_retention_seconds = 60 * 60 * 24 * 14
   name                      = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}delivery"
   tags                      = var.tags
 }

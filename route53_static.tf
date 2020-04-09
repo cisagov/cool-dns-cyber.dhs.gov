@@ -33,6 +33,11 @@ resource "aws_ses_domain_dkim" "cyber_dhs_gov_dkim" {
   domain = aws_ses_domain_identity.cyhy_dhs_gov_identity.domain
 }
 
+# ------------------------------------------------------------------------------
+# Create the infrastructure for SES bounce, complaint, and delivery
+# notifications.
+# ------------------------------------------------------------------------------
+
 # It would be nice to add aws_sns_topic_subscription resources for the
 # bounce and complaint email notifications below, but Terraform cannot
 # support that because such subscriptions must be approved out of

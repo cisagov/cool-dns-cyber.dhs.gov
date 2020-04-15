@@ -182,3 +182,14 @@ resource "aws_route53_record" "dkim_CNAME" {
   type    = "CNAME"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
+
+# ------------------------------------------------------------------------------
+# Set up mail.${aws_route53_zone.cyber_dhs_gov.name} as SES MAIL FROM
+# resource.
+# ------------------------------------------------------------------------------
+resource "aws_ses_domain_mail_from" "cyber_dhs_gov" {
+  provider = aws.route53resourcechange
+
+  domain           = aws_ses_domain_identity.cyhy_dhs_gov_identity.domain
+  mail_from_domain = "mail.${aws_ses_domain_identity.cyhy_dhs_gov_identity.domain}"
+}

@@ -24,6 +24,14 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
 
   statement {
     actions = [
+      "route53:ListHostedZones"
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    actions = [
       "ses:DeleteIdentity",
       "ses:GetIdentityDkimAttributes",
       "ses:GetIdentityMailFromDomainAttributes",

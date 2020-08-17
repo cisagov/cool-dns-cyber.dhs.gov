@@ -12,10 +12,27 @@ relationship with the users account.
 1. Run the command `terraform init`.
 1. Run the command `terraform apply`.
 
+## Requirements ##
+
+| Name | Version |
+|------|---------|
+| terraform | ~> 0.12.0 |
+| aws | ~> 2.0 |
+
+## Providers ##
+
+| Name | Version |
+|------|---------|
+| aws | ~> 2.0 |
+| aws.dnsprovisionaccount | ~> 2.0 |
+| aws.organizationsreadonly | ~> 2.0 |
+| aws.route53resourcechange | ~> 2.0 |
+| terraform | n/a |
+
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | aws_region | The AWS region to communicate with. | `string` | `us-east-1` | no |
 | cyhy_account_id | The ID of the CyHy account. | `string` | n/a | yes |
 | route53resourcechange_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify resource records in the DNS zone. | `string` | `Allows sufficient permissions to modify resource records in the DNS zone.` | no |

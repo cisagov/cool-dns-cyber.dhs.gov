@@ -2,10 +2,10 @@
 
 [![GitHub Build Status](https://github.com/cisagov/cool-dns-cyber.dhs.gov/workflows/build/badge.svg)](https://github.com/cisagov/cool-dns-cyber.dhs.gov/actions)
 
-This repository contains a Terraform configuration that will provision the DNS zone
-`cyber.dhs.gov` within the COOL.  It creates an IAM role that allows sufficient
-permissions to modify resources records in this zone.  This role has a trust
-relationship with the users account.
+This repository contains a Terraform configuration that will provision
+the DNS zone `cyber.dhs.gov` within the COOL.  It creates an IAM role
+that allows sufficient permissions to modify resources records in this
+zone.  This role has a trust relationship with the users account.
 
 ## Usage ##
 

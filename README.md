@@ -32,6 +32,12 @@ relationship with the users account.
 | route53resourcechange_role | IAM role that allows sufficient permissions to modify resource records in the cyber.dhs.gov zone. |
 | sessendemail_role | IAM role that allows sufficient permissions to send email via AWS SES. |
 
+## Notes ##
+
+Running `pre-commit` requires running `terraform init` in every directory that
+contains Terraform code. In this repository, these are the main directory and
+every directory under `examples/`.
+
 ## Contributing ##
 
 We welcome contributions!  Please see [here](CONTRIBUTING.md) for

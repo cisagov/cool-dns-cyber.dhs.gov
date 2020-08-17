@@ -2,20 +2,37 @@
 
 [![GitHub Build Status](https://github.com/cisagov/cool-dns-cyber.dhs.gov/workflows/build/badge.svg)](https://github.com/cisagov/cool-dns-cyber.dhs.gov/actions)
 
-This repository contains a Terraform configuration that will provision the DNS zone
-`cyber.dhs.gov` within the COOL.  It creates an IAM role that allows sufficient
-permissions to modify resources records in this zone.  This role has a trust
-relationship with the users account.
+This repository contains a Terraform configuration that will provision
+the DNS zone `cyber.dhs.gov` within the COOL.  It creates an IAM role
+that allows sufficient permissions to modify resources records in this
+zone.  This role has a trust relationship with the users account.
 
 ## Usage ##
 
 1. Run the command `terraform init`.
 1. Run the command `terraform apply`.
 
+## Requirements ##
+
+| Name | Version |
+|------|---------|
+| terraform | ~> 0.12.0 |
+| aws | ~> 2.0 |
+
+## Providers ##
+
+| Name | Version |
+|------|---------|
+| aws | ~> 2.0 |
+| aws.dnsprovisionaccount | ~> 2.0 |
+| aws.organizationsreadonly | ~> 2.0 |
+| aws.route53resourcechange | ~> 2.0 |
+| terraform | n/a |
+
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | aws_region | The AWS region to communicate with. | `string` | `us-east-1` | no |
 | cyhy_account_id | The ID of the CyHy account. | `string` | n/a | yes |
 | route53resourcechange_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify resource records in the DNS zone. | `string` | `Allows sufficient permissions to modify resource records in the DNS zone.` | no |
@@ -31,6 +48,12 @@ relationship with the users account.
 | cyber_dhs_gov_zone | The cyber.dhs.gov public hosted zone. |
 | route53resourcechange_role | IAM role that allows sufficient permissions to modify resource records in the cyber.dhs.gov zone. |
 | sessendemail_role | IAM role that allows sufficient permissions to send email via AWS SES. |
+
+## Notes ##
+
+Running `pre-commit` requires running `terraform init` in every
+directory that contains Terraform code. In this repository, this is
+just the main directory.
 
 ## Contributing ##
 

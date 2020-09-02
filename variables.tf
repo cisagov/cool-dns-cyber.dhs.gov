@@ -21,14 +21,10 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "tags" {
-  type        = map(string)
-  description = "Tags to apply to all AWS resources created"
-  default = {
-    Team        = "VM Fusion - Development"
-    Application = "COOL - DNS - cyber.dhs.gov"
-    Workspace   = "production"
-  }
+variable "cloudfront_zone_id" {
+  type        = string
+  description = "The ID of the Cloudfront hosted zone. This is set by AWS and is a constant across all Cloudfront distributions."
+  default     = "Z2FDTNDATAQYW2"
 }
 
 variable "route53resourcechange_role_description" {
@@ -53,4 +49,14 @@ variable "sessendemail_role_name" {
   type        = string
   description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES."
   default     = "SesSendEmail-cyber.dhs.gov"
+}
+
+variable "tags" {
+  type        = map(string)
+  description = "Tags to apply to all AWS resources created"
+  default = {
+    Team        = "VM Fusion - Development"
+    Application = "COOL - DNS - cyber.dhs.gov"
+    Workspace   = "production"
+  }
 }

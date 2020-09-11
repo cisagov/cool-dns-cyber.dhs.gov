@@ -42,6 +42,16 @@ resource "aws_route53_record" "crossfeed_prod_acm_CNAME" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
+resource "aws_route53_record" "crossfeed_prod_docs_CNAME" {
+  provider = aws.route53resourcechange
+
+  name    = "docs.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["cisagov.github.io"]
+  ttl     = 300
+  type    = "CNAME"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
 resource "aws_route53_record" "crossfeed_prod_TXT" {
   provider = aws.route53resourcechange
 

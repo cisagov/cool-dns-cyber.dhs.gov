@@ -10,5 +10,5 @@ output "route53resourcechange_role" {
 
 output "sessendemail_role" {
   value       = aws_iam_role.sessendemail_role
-  description = "IAM role that allows sufficient permissions to send email via AWS SES."
+  description = "IAM role that allows sufficient permissions to send email via AWS SES and remove email addresses from the suppression list."
 }

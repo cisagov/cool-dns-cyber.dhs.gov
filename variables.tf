@@ -41,13 +41,13 @@ variable "route53resourcechange_role_name" {
 
 variable "sessendemail_role_description" {
   type        = string
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES."
-  default     = "Allows sufficient permissions to send email via AWS SES."
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES and remove email addresses from the suppression list."
+  default     = "Allows sufficient permissions to send email via AWS SES and remove email addresses from the suppression list."
 }
 
 variable "sessendemail_role_name" {
   type        = string
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES."
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES and remove email addresses from the suppression list."
   default     = "SesSendEmail-cyber.dhs.gov"
 }
 

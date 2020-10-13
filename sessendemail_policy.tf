@@ -3,6 +3,7 @@
 # ------------------------------------------------------------------------------
 
 data "aws_iam_policy_document" "sessendemail_doc" {
+  # Allow sending of email
   statement {
     actions = [
       "ses:Send*",
@@ -10,6 +11,17 @@ data "aws_iam_policy_document" "sessendemail_doc" {
 
     resources = [
       aws_ses_domain_identity.cyhy_dhs_gov_identity.arn,
+    ]
+  }
+
+  # Allow deletion of email addresses from the suppression list
+  statement {
+    actions = [
+      "ses:DeleteSuppressedDestination",
+    ]
+
+    resources = [
+      "*",
     ]
   }
 }

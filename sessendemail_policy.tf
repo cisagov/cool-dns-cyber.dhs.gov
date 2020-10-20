@@ -18,6 +18,11 @@ data "aws_iam_policy_document" "sessendemail_doc" {
   statement {
     actions = [
       "ses:DeleteSuppressedDestination",
+      "ses:GetSuppressedDestination",
+      "ses:ListSuppressedDestinations",
+      "ses:PutAccountSuppressionAttributes",
+      "ses:PutConfigurationSetSuppressionOptions",
+      "ses:PutSuppressedDestination",
     ]
 
     resources = [

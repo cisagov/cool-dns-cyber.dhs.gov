@@ -48,7 +48,7 @@ resource "aws_ses_domain_dkim" "cyber_dhs_gov_dkim" {
 resource "aws_sns_topic" "cyber_dhs_gov_bounce" {
   provider = aws.route53resourcechange
 
-  name = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}bounce"
+  name = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}_bounce"
   tags = var.tags
 }
 resource "aws_ses_identity_notification_topic" "cyber_dhs_gov_bounce" {
@@ -64,7 +64,7 @@ resource "aws_ses_identity_notification_topic" "cyber_dhs_gov_bounce" {
 resource "aws_sns_topic" "cyber_dhs_gov_complaint" {
   provider = aws.route53resourcechange
 
-  name = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}complaint"
+  name = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}_complaint"
   tags = var.tags
 }
 resource "aws_ses_identity_notification_topic" "cyber_dhs_gov_complaint" {
@@ -80,7 +80,7 @@ resource "aws_ses_identity_notification_topic" "cyber_dhs_gov_complaint" {
 resource "aws_sns_topic" "cyber_dhs_gov_delivery" {
   provider = aws.route53resourcechange
 
-  name = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}delivery"
+  name = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}_delivery"
   tags = var.tags
 }
 resource "aws_ses_identity_notification_topic" "cyber_dhs_gov_delivery" {
@@ -96,7 +96,7 @@ resource "aws_sqs_queue" "cyber_dhs_gov_delivery" {
 
   # This is one fortnight (14 days)
   message_retention_seconds = 60 * 60 * 24 * 14
-  name                      = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}delivery"
+  name                      = "${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}_delivery"
   tags                      = var.tags
 }
 resource "aws_sns_topic_subscription" "cyber_dhs_gov_bounce" {

@@ -13,10 +13,10 @@ data "aws_iam_policy_document" "sessendemail_assume_role_doc" {
     principals {
       type = "AWS"
       # The users account needs to send an alert email when a new user
-      # is created.  The INL accounts need to send email for the PCA
+      # is created.  The INL and PCA accounts need to send email for the PCA
       # work they are doing.  The CyHy account needs to email the CyHy
       # and BOD 18-01 reports and the CybEx scorecard.
-      identifiers = concat([local.users_account_id], local.inl_account_ids, [var.cyhy_account_id])
+      identifiers = concat([local.users_account_id], local.inl_account_ids, local.pca_account_ids, [var.cyhy_account_id])
     }
   }
 }

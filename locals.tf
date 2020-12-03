@@ -31,6 +31,12 @@ locals {
     x.id if length(regexall("^inl\\d+ \\((?:Staging|Production)\\)$", x.name)) > 0
   ]
 
+  # Find the PCA accounts by name
+  pca_account_ids = [
+    for x in data.aws_organizations_organization.cool.accounts :
+    x.id if length(regexall("^PCA \\((?:Staging|Production)\\)$", x.name)) > 0
+  ]
+
   # Find the new Users account by name and email.
   users_account_id = [
     for x in data.aws_organizations_organization.cool.accounts :

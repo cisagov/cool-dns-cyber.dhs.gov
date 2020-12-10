@@ -11,7 +11,7 @@ resource "aws_route53_record" "pca_production_NS" {
   provider = aws.route53resourcechange
 
   name    = "con-pca.cool.${aws_route53_zone.cyber_dhs_gov.name}"
-  ttl     = 30
+  ttl     = 86400
   type    = "NS"
   records = data.terraform_remote_state.pca_production.outputs.hosted_zone_name_servers
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id

@@ -3,21 +3,6 @@
 # outputs of one or more Terraform configurations as input data for this configuration.
 # ------------------------------------------------------------------------------
 
-data "terraform_remote_state" "dns" {
-  backend = "s3"
-
-  config = {
-    encrypt        = true
-    bucket         = "cisa-cool-terraform-state"
-    dynamodb_table = "terraform-state-lock"
-    profile        = "cool-terraform-backend"
-    region         = "us-east-1"
-    key            = "cool-accounts/dns.tfstate"
-  }
-
-  workspace = "production"
-}
-
 data "terraform_remote_state" "master" {
   backend = "s3"
 
@@ -33,7 +18,7 @@ data "terraform_remote_state" "master" {
   workspace = "production"
 }
 
-data "terraform_remote_state" "pca_production" {
+data "terraform_remote_state" "dns" {
   backend = "s3"
 
   config = {
@@ -42,23 +27,8 @@ data "terraform_remote_state" "pca_production" {
     dynamodb_table = "terraform-state-lock"
     profile        = "cool-terraform-backend"
     region         = "us-east-1"
-    key            = "con-pca-cicd/terraform.tfstate"
+    key            = "cool-accounts/dns.tfstate"
   }
 
   workspace = "production"
-}
-
-data "terraform_remote_state" "pca_staging" {
-  backend = "s3"
-
-  config = {
-    encrypt        = true
-    bucket         = "cisa-cool-terraform-state"
-    dynamodb_table = "terraform-state-lock"
-    profile        = "cool-terraform-backend"
-    region         = "us-east-1"
-    key            = "con-pca-cicd/terraform.tfstate"
-  }
-
-  workspace = "staging"
 }

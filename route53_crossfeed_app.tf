@@ -55,18 +55,11 @@ resource "aws_route53_record" "crossfeed_prod_docs_CNAME" {
 resource "aws_route53_record" "crossfeed_prod_TXT" {
   provider = aws.route53resourcechange
 
-  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["amazonses:rkxSP4d4VmzpdVhKoONkBFT8XYa/vJrCHgs5rs25/L4="]
-  ttl     = 300
-  type    = "TXT"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_prod_SPF" {
-  provider = aws.route53resourcechange
-
-  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["v=spf1 include:amazonses.com -all"]
+  name = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = [
+    "amazonses:rkxSP4d4VmzpdVhKoONkBFT8XYa/vJrCHgs5rs25/L4=",
+    "v=spf1 include:amazonses.com -all",
+  ]
   ttl     = 300
   type    = "TXT"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
@@ -219,18 +212,11 @@ resource "aws_route53_record" "crossfeed_staging_MX" {
 resource "aws_route53_record" "crossfeed_staging_TXT" {
   provider = aws.route53resourcechange
 
-  name    = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["amazonses:rv6QdeDe1r8/Hn5HkSmfO8FttR8A8/2pHXtsLEHQI34="]
-  ttl     = 300
-  type    = "TXT"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_staging_SPF" {
-  provider = aws.route53resourcechange
-
-  name    = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["v=spf1 include:amazonses.com -all"]
+  name = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = [
+    "amazonses:rv6QdeDe1r8/Hn5HkSmfO8FttR8A8/2pHXtsLEHQI34=",
+    "v=spf1 include:amazonses.com -all",
+  ]
   ttl     = 300
   type    = "TXT"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id

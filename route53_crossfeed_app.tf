@@ -62,6 +62,16 @@ resource "aws_route53_record" "crossfeed_prod_TXT" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
+resource "aws_route53_record" "crossfeed_prod_SPF" {
+  provider = aws.route53resourcechange
+
+  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["v=spf1 include:amazonses.com -all"]
+  ttl     = 300
+  type    = "TXT"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
 # ------------------------------------------------------------------------------
 # Prod API entries
 # ------------------------------------------------------------------------------
@@ -211,6 +221,16 @@ resource "aws_route53_record" "crossfeed_staging_TXT" {
 
   name    = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = ["amazonses:rv6QdeDe1r8/Hn5HkSmfO8FttR8A8/2pHXtsLEHQI34="]
+  ttl     = 300
+  type    = "TXT"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "crossfeed_staging_SPF" {
+  provider = aws.route53resourcechange
+
+  name    = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["v=spf1 include:amazonses.com -all"]
   ttl     = 300
   type    = "TXT"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id

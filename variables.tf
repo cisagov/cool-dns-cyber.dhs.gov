@@ -39,15 +39,27 @@ variable "route53resourcechange_role_name" {
   default     = "Route53ResourceChange-cyber.dhs.gov"
 }
 
+variable "sesmanagesuppressionlist_role_description" {
+  type        = string
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to manage the suppression list."
+  default     = "Allows sufficient permissions to manage the suppression list."
+}
+
+variable "sesmanagesuppressionlist_role_name" {
+  type        = string
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to manage the suppression list."
+  default     = "SesManageSuppressionList-cyber.dhs.gov"
+}
+
 variable "sessendemail_role_description" {
   type        = string
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES and manipulate the suppression list."
-  default     = "Allows sufficient permissions to send email via AWS SES and manipulate the suppression list."
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES."
+  default     = "Allows sufficient permissions to send email via AWS SES."
 }
 
 variable "sessendemail_role_name" {
   type        = string
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES and manipulate the suppression list."
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES."
   default     = "SesSendEmail-cyber.dhs.gov"
 }
 

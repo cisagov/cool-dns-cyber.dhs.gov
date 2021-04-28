@@ -8,7 +8,12 @@ output "route53resourcechange_role" {
   description = "IAM role that allows sufficient permissions to modify resource records in the cyber.dhs.gov zone."
 }
 
+output "sesmanagementsuppressionlist_role" {
+  value       = aws_iam_role.sesmanagesuppressionlist_role
+  description = "IAM role that allows sufficient permissions to remove email addresses from the suppression list."
+}
+
 output "sessendemail_role" {
   value       = aws_iam_role.sessendemail_role
-  description = "IAM role that allows sufficient permissions to send email via AWS SES and remove email addresses from the suppression list."
+  description = "IAM role that allows sufficient permissions to send email via AWS SES."
 }

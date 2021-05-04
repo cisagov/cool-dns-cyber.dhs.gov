@@ -8,6 +8,7 @@ data "aws_iam_policy_document" "sessendemail_assume_role_doc" {
   statement {
     actions = [
       "sts:AssumeRole",
+      "sts:TagSession",
     ]
 
     principals {

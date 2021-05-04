@@ -13,22 +13,6 @@ data "aws_iam_policy_document" "sessendemail_doc" {
       aws_ses_domain_identity.cyhy_dhs_gov_identity.arn,
     ]
   }
-
-  # Allow deletion of email addresses from the suppression list
-  statement {
-    actions = [
-      "ses:DeleteSuppressedDestination",
-      "ses:GetSuppressedDestination",
-      "ses:ListSuppressedDestinations",
-      "ses:PutAccountSuppressionAttributes",
-      "ses:PutConfigurationSetSuppressionOptions",
-      "ses:PutSuppressedDestination",
-    ]
-
-    resources = [
-      "*",
-    ]
-  }
 }
 
 resource "aws_iam_policy" "sessendemail_policy" {

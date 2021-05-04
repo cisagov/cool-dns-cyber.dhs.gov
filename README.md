@@ -144,7 +144,7 @@ No modules.
 |------|-------------|
 | cyber\_dhs\_gov\_zone | The cyber.dhs.gov public hosted zone. |
 | route53resourcechange\_role | IAM role that allows sufficient permissions to modify resource records in the cyber.dhs.gov zone. |
-| sesmanagementsuppressionlist\_role | IAM role that allows sufficient permissions to remove email addresses from the suppression list. |
+| sesmanagesuppressionlist\_role | IAM role that allows sufficient permissions to remove email addresses from the suppression list. |
 | sessendemail\_role | IAM role that allows sufficient permissions to send email via AWS SES. |
 
 ## Notes ##

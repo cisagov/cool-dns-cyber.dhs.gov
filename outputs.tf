@@ -10,7 +10,7 @@ output "route53resourcechange_role" {
 
 output "sesmanagesuppressionlist_role" {
   value       = aws_iam_role.sesmanagesuppressionlist_role
-  description = "IAM role that allows sufficient permissions to remove email addresses from the suppression list."
+  description = "IAM role that allows sufficient permissions to manage the AWS SES suppression list."
 }
 
 output "sessendemail_role" {

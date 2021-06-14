@@ -36,7 +36,6 @@ resource "aws_iam_role" "sessendemail_role" {
   assume_role_policy = data.aws_iam_policy_document.sessendemail_assume_role_doc.json
   description        = var.sessendemail_role_description
   name               = var.sessendemail_role_name
-  tags               = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "sessendemail_policy_attachment" {

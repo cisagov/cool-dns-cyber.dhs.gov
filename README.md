@@ -23,10 +23,10 @@ zone.  This role has a trust relationship with the users account.
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.0 |
-| aws.dnsprovisionaccount | ~> 3.0 |
-| aws.organizationsreadonly | ~> 3.0 |
-| aws.route53resourcechange | ~> 3.0 |
+| aws | ~> 3.38 |
+| aws.dnsprovisionaccount | ~> 3.38 |
+| aws.organizationsreadonly | ~> 3.38 |
+| aws.route53resourcechange | ~> 3.38 |
 | terraform | n/a |
 
 ## Modules ##
@@ -136,7 +136,7 @@ No modules.
 | sesmanagesuppressionlist\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to manage the suppression list. | `string` | `"SesManageSuppressionList-cyber.dhs.gov"` | no |
 | sessendemail\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES. | `string` | `"Allows sufficient permissions to send email via AWS SES."` | no |
 | sessendemail\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES. | `string` | `"SesSendEmail-cyber.dhs.gov"` | no |
-| tags | Tags to apply to all AWS resources created | `map(string)` | `{"Application": "COOL - DNS - cyber.dhs.gov", "Team": "VM Fusion - Development", "Workspace": "production"}` | no |
+| tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 
 ## Outputs ##
 
@@ -144,7 +144,7 @@ No modules.
 |------|-------------|
 | cyber\_dhs\_gov\_zone | The cyber.dhs.gov public hosted zone. |
 | route53resourcechange\_role | IAM role that allows sufficient permissions to modify resource records in the cyber.dhs.gov zone. |
-| sesmanagesuppressionlist\_role | IAM role that allows sufficient permissions to remove email addresses from the suppression list. |
+| sesmanagesuppressionlist\_role | IAM role that allows sufficient permissions to manage the AWS SES suppression list. |
 | sessendemail\_role | IAM role that allows sufficient permissions to send email via AWS SES. |
 
 ## Notes ##

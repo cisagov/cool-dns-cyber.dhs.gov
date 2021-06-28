@@ -27,7 +27,6 @@ resource "aws_iam_role" "sesmanagesuppressionlist_role" {
   assume_role_policy = data.aws_iam_policy_document.sesmanagesuppressionlist_assume_role_doc.json
   description        = var.sesmanagesuppressionlist_role_description
   name               = var.sesmanagesuppressionlist_role_name
-  tags               = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "sesmanagesuppressionlist_policy_attachment" {

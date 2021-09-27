@@ -35,7 +35,7 @@ resource "aws_route53_record" "crossfeed_prod_AAAA" {
 resource "aws_route53_record" "crossfeed_prod_acm_CNAME" {
   provider = aws.route53resourcechange
 
-  name    = "_fb2df3ea0959566abf846bdb73696d75.api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  name    = "_fb2df3ea0959566abf846bdb73696d75.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = ["_8ef30eecb0785429151594c13c049761.jfrzftwwjs.acm-validations.aws."]
   ttl     = 300
   type    = "CNAME"

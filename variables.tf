@@ -17,7 +17,7 @@ variable "cyhy_account_id" {
 
 variable "additional_remote_state_account_ids" {
   type        = list(string)
-  description = "A list of accound IDs corresponding to additional accounts that should have permission to assume the role to read this root module's remote state (e.g. [\"123456789012\"])."
+  description = "A list of account IDs corresponding to additional accounts that should have permission to assume the role to read this root module's remote state (e.g. [\"123456789012\"])."
   default     = []
 }
 
@@ -35,7 +35,7 @@ variable "cloudfront_zone_id" {
 
 variable "read_terraform_state_role_name" {
   type        = string
-  description = "The name to assign the IAM role and policy that allows read-only access to the cool-dns.cyber.dhs.gov state in the S3 bucket where Terraform state is stored."
+  description = "The name to assign the IAM role and policy that allows read-only access to the cool-dns-cyber.dhs.gov state in the S3 bucket where Terraform state is stored."
   default     = "ReadCyberDhsGovTerraformState"
 }
 

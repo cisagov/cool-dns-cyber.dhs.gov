@@ -31,7 +31,9 @@ zone.  This role has a trust relationship with the users account.
 
 ## Modules ##
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| read\_terraform\_state | github.com/cisagov/terraform-state-read-role-tf-module | n/a |
 
 ## Resources ##
 
@@ -49,6 +51,12 @@ No modules.
 | [aws_route53_record._amazonses_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record._amazonses_dmarc_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record._dmarc_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.crossfeed_cool_prod_dkim1_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.crossfeed_cool_prod_dkim2_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.crossfeed_cool_prod_dkim3_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.crossfeed_cool_staging_dkim1_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.crossfeed_cool_staging_dkim2_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.crossfeed_cool_staging_dkim3_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_prod_A](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_prod_AAAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_prod_MX](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -122,14 +130,17 @@ No modules.
 | [terraform_remote_state.master](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 | [terraform_remote_state.pca_production](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 | [terraform_remote_state.pca_staging](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
+| [terraform_remote_state.terraform](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| additional\_remote\_state\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to read this root module's remote state (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
 | aws\_region | The AWS region to communicate with. | `string` | `"us-east-1"` | no |
 | cloudfront\_zone\_id | The ID of the Cloudfront hosted zone. This is set by AWS and is a constant across all Cloudfront distributions. | `string` | `"Z2FDTNDATAQYW2"` | no |
 | cyhy\_account\_id | The ID of the CyHy account. | `string` | n/a | yes |
+| read\_terraform\_state\_role\_name | The name to assign the IAM role and policy that allows read-only access to the cool-dns-cyber.dhs.gov state in the S3 bucket where Terraform state is stored. | `string` | `"ReadCyberDhsGovTerraformState"` | no |
 | route53resourcechange\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify resource records in the DNS zone. | `string` | `"Allows sufficient permissions to modify resource records in the DNS zone."` | no |
 | route53resourcechange\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify resource records in the DNS zone. | `string` | `"Route53ResourceChange-cyber.dhs.gov"` | no |
 | sesmanagesuppressionlist\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to manage the suppression list. | `string` | `"Allows sufficient permissions to manage the suppression list."` | no |

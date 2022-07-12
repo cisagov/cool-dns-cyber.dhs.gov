@@ -15,6 +15,18 @@ variable "cyhy_account_id" {
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
 
+variable "acmresourcechange_role_description" {
+  type        = string
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM resources in the DNS account."
+  default     = "Allows sufficient permissions to modify ACM resources in the DNS account."
+}
+
+variable "acmresourcechange_role_name" {
+  type        = string
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM resources in the DNS account."
+  default     = "ACMResourceChange"
+}
+
 variable "additional_remote_state_account_ids" {
   type        = list(string)
   description = "A list of account IDs corresponding to additional accounts that should have permission to assume the role to read this root module's remote state (e.g. [\"123456789012\"])."

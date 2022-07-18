@@ -1,5 +1,5 @@
 output "acmresourcechange_role" {
-  description = "IAM role that allows sufficient permissions to modify ACM resources in the DNS account."
+  description = "IAM role that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account."
   value       = aws_iam_role.acmresourcechange_role
 }
 

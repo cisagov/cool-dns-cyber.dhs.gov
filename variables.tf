@@ -17,13 +17,13 @@ variable "cyhy_account_id" {
 
 variable "acmresourcechange_role_description" {
   type        = string
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM resources in the DNS account."
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account."
   default     = "Allows sufficient permissions to modify ACM resources in the DNS account."
 }
 
 variable "acmresourcechange_role_name" {
   type        = string
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM resources in the DNS account."
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account."
   default     = "ACMResourceChange"
 }
 

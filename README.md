@@ -145,8 +145,8 @@ zone.  This role has a trust relationship with the users account.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| acmresourcechange\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM resources in the DNS account. | `string` | `"Allows sufficient permissions to modify ACM resources in the DNS account."` | no |
-| acmresourcechange\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM resources in the DNS account. | `string` | `"ACMResourceChange"` | no |
+| acmresourcechange\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. | `string` | `"Allows sufficient permissions to modify ACM resources in the DNS account."` | no |
+| acmresourcechange\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. | `string` | `"ACMResourceChange"` | no |
 | additional\_remote\_state\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to read this root module's remote state (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
 | aws\_region | The AWS region to communicate with. | `string` | `"us-east-1"` | no |
 | cloudfront\_zone\_id | The ID of the Cloudfront hosted zone. This is set by AWS and is a constant across all Cloudfront distributions. | `string` | `"Z2FDTNDATAQYW2"` | no |
@@ -164,7 +164,7 @@ zone.  This role has a trust relationship with the users account.
 
 | Name | Description |
 |------|-------------|
-| acmresourcechange\_role | IAM role that allows sufficient permissions to modify ACM resources in the DNS account. |
+| acmresourcechange\_role | IAM role that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. |
 | cyber\_dhs\_gov\_zone | The cyber.dhs.gov public hosted zone. |
 | route53resourcechange\_role | IAM role that allows sufficient permissions to modify resource records in the cyber.dhs.gov zone. |
 | sesmanagesuppressionlist\_role | IAM role that allows sufficient permissions to manage the AWS SES suppression list. |

@@ -9,6 +9,19 @@ provider "aws" {
   region = var.aws_region
 }
 
+# The provider that uses the ACM role to modify certificate resources.
+provider "aws" {
+  alias = "acmresourcechange"
+  assume_role {
+    role_arn     = aws_iam_role.acmresourcechange_role.arn
+    session_name = local.caller_user_name
+  }
+  default_tags {
+    tags = var.tags
+  }
+  region = var.aws_region
+}
+
 # The provider used to create new public hosted zones.
 provider "aws" {
   alias = "dnsprovisionaccount"

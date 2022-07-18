@@ -24,6 +24,7 @@ zone.  This role has a trust relationship with the users account.
 | Name | Version |
 |------|---------|
 | aws | ~> 3.38 |
+| aws.acmresourcechange | ~> 3.38 |
 | aws.dnsprovisionaccount | ~> 3.38 |
 | aws.organizationsreadonly | ~> 3.38 |
 | aws.route53resourcechange | ~> 3.38 |
@@ -39,18 +40,24 @@ zone.  This role has a trust relationship with the users account.
 
 | Name | Type |
 |------|------|
+| [aws_acm_certificate.rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate) | resource |
+| [aws_acm_certificate_validation.rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate_validation) | resource |
+| [aws_iam_policy.acmresourcechange_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.route53resourcechange_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.sesmanagesuppressionlist_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.sessendemail_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role.acmresourcechange_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.route53resourcechange_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.sesmanagesuppressionlist_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.sessendemail_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.acmresourcechange_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.route53resourcechange_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.sesmanagesuppressionlist_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.sessendemail_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_route53_record._amazonses_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record._amazonses_dmarc_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record._dmarc_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.ceil_NS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_cool_prod_dkim1_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_cool_prod_dkim2_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_cool_prod_dkim3_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -99,6 +106,7 @@ zone.  This role has a trust relationship with the users account.
 | [aws_route53_record.root_MX](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.root_SPF](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.root_acm_rules_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.rules_certificate_validation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.rules_ncats_A](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.rules_ncats_AAAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.vip_ncats_A](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -119,6 +127,7 @@ zone.  This role has a trust relationship with the users account.
 | [aws_sns_topic_subscription.cyber_dhs_gov_bounce](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic_subscription) | resource |
 | [aws_sqs_queue.cyber_dhs_gov_delivery](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy_document.acmresourcechange_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.route53resourcechange_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.sesmanagesuppressionlist_assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -136,6 +145,8 @@ zone.  This role has a trust relationship with the users account.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| acmresourcechange\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. | `string` | `"Allows sufficient permissions to modify ACM resources in the DNS account."` | no |
+| acmresourcechange\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. | `string` | `"ACMResourceChange"` | no |
 | additional\_remote\_state\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to read this root module's remote state (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
 | aws\_region | The AWS region to communicate with. | `string` | `"us-east-1"` | no |
 | cloudfront\_zone\_id | The ID of the Cloudfront hosted zone. This is set by AWS and is a constant across all Cloudfront distributions. | `string` | `"Z2FDTNDATAQYW2"` | no |
@@ -153,6 +164,7 @@ zone.  This role has a trust relationship with the users account.
 
 | Name | Description |
 |------|-------------|
+| acmresourcechange\_role | IAM role that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. |
 | cyber\_dhs\_gov\_zone | The cyber.dhs.gov public hosted zone. |
 | route53resourcechange\_role | IAM role that allows sufficient permissions to modify resource records in the cyber.dhs.gov zone. |
 | sesmanagesuppressionlist\_role | IAM role that allows sufficient permissions to manage the AWS SES suppression list. |

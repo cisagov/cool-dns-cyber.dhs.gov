@@ -35,8 +35,6 @@ resource "aws_route53_record" "rules_certificate_validation" {
 
   allow_overwrite = true
 
-  depends_on = [aws_acm_certificate.rules]
-
   name    = each.value.name
   records = [each.value.record]
   ttl     = 60

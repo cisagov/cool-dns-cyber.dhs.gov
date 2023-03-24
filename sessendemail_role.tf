@@ -14,12 +14,15 @@ data "aws_iam_policy_document" "sessendemail_assume_role_doc" {
     principals {
       type = "AWS"
       # Account usage needs:
+      # - Additional: The use case for each account should be documented with
+      #   a comment in the Terraform variables file
       # - CyHy: Email the CyHy and BOD 18-01 reports and the CybEx scorecard
       # - Domain Manager: Send various notification emails to internal users
       # - INL: Test sending phishing emails for Phishing Campaign Assessments
       # - PCA: Send phishing emails for Phishing Campaign Assessments
       # - Users: Send an alert email when a new user account is created
       identifiers = concat(
+        var.additional_ses_sendemail_account_ids,
         [var.cyhy_account_id],
         local.domainmanager_account_ids,
         local.inl_account_ids,

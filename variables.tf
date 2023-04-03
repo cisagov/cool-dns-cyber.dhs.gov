@@ -33,6 +33,12 @@ variable "additional_remote_state_account_ids" {
   default     = []
 }
 
+variable "additional_ses_sendemail_account_ids" {
+  type        = list(string)
+  description = "A list of account IDs corresponding to additional accounts that should have permission to assume the role to send email via AWS SES (e.g. [\"123456789012\"])."
+  default     = []
+}
+
 variable "aws_region" {
   type        = string
   description = "The AWS region to communicate with."

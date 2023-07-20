@@ -320,7 +320,7 @@ resource "aws_route53_record" "crossfeed_staging_api_CNAME2" {
 resource "aws_route53_record" "crossfeed_staging_api_CNAME3" {
   provider = aws.route53resourcechange
 
-  name    = "staging-cd.api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  name    = "staging.api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = ["crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com"]
   ttl     = 300
   type    = "CNAME"

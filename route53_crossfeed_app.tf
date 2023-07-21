@@ -223,7 +223,7 @@ resource "aws_route53_record" "crossfeed_staging_AAAA" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
-resource "aws_route53_record" "crossfeed_staging_CNAME" {
+resource "aws_route53_record" "crossfeed_staging_CNAME1" {
   provider = aws.route53resourcechange
 
   name    = "staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"

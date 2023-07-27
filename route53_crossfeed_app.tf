@@ -310,8 +310,19 @@ resource "aws_route53_record" "crossfeed_staging_api_AAAA" {
 resource "aws_route53_record" "crossfeed_staging_api_CNAME" {
   provider = aws.route53resourcechange
 
-  name    = "staging.api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com"]
+  name    = "_1cd918a94c59cbd2fdce9df0fdfc980f.api.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["_f1fe0d0997fac6b9d221c8b482ac0ec2.jfrzftwwjs.acm-validations.aws."]
+  ttl     = 300
+  type    = "CNAME"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+
+resource "aws_route53_record" "crossfeed_staging_api_CNAME2" {
+  provider = aws.route53resourcechange
+
+  name    = "_75f0c44adb3c8ec0023ddc11585227e8.api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["_c4ade117ce7d85d8765dc1e8925140df.zcdnftlygx.acm-validations.aws."]
   ttl     = 300
   type    = "CNAME"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
@@ -320,18 +331,8 @@ resource "aws_route53_record" "crossfeed_staging_api_CNAME" {
 resource "aws_route53_record" "crossfeed_staging_api_CNAME2" {
   provider = aws.route53resourcechange
 
-  name    = "_1cd918a94c59cbd2fdce9df0fdfc980f.api.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["_f1fe0d0997fac6b9d221c8b482ac0ec2.jfrzftwwjs.acm-validations.aws."]
-  ttl     = 300
-  type    = "CNAME"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_staging_api_CNAME3" {
-  provider = aws.route53resourcechange
-
-  name    = "_75f0c44adb3c8ec0023ddc11585227e8.api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["_c4ade117ce7d85d8765dc1e8925140df.zcdnftlygx.acm-validations.aws."]
+  name    = "staging.api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com"]
   ttl     = 300
   type    = "CNAME"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id

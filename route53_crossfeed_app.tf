@@ -197,7 +197,7 @@ resource "aws_route53_record" "crossfeed_prod_ses_TXT" {
 # Staging entries
 # ------------------------------------------------------------------------------
 
-resource "aws_route53_record" "crossfeed_staging_A" {
+resource "aws_route53_record" "crossfeed_staging_cd_A" {
   provider = aws.route53resourcechange
 
   alias {
@@ -210,7 +210,7 @@ resource "aws_route53_record" "crossfeed_staging_A" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
-resource "aws_route53_record" "crossfeed_staging_AAAA" {
+resource "aws_route53_record" "crossfeed_staging_cd_AAAA" {
   provider = aws.route53resourcechange
 
   alias {
@@ -219,6 +219,35 @@ resource "aws_route53_record" "crossfeed_staging_AAAA" {
     evaluate_target_health = false
   }
   name    = "staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  type    = "AAAA"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+
+# The hosted_zone_id for the below records comes from https://docs.aws.amazon.com/general/latest/gr/elb.html
+# (NLBs in us-gov-west-1 region)
+resource "aws_route53_record" "crossfeed_staging_A" {
+  provider = aws.route53resourcechange
+
+  alias {
+    name                   = "crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com."
+    zone_id                = "ZMG1MZ2THAWF1"
+    evaluate_target_health = false
+  }
+  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  type    = "A"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "crossfeed_staging_AAAA" {
+  provider = aws.route53resourcechange
+
+  alias {
+    name                   = "crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com."
+    zone_id                = "ZMG1MZ2THAWF1"
+    evaluate_target_health = false
+  }
+  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
@@ -234,16 +263,6 @@ resource "aws_route53_record" "crossfeed_staging_CNAME1" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_CNAME2" {
-  provider = aws.route53resourcechange
-
-  name    = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com"]
-  ttl     = 300
-  type    = "CNAME"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_staging_CNAME3" {
   provider = aws.route53resourcechange
 
   name    = "_778113d42c9d50544ff24081c8690e7b.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"

@@ -231,7 +231,7 @@ resource "aws_route53_record" "crossfeed_staging_A" {
 
   alias {
     name                   = "crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "ZMG1MZ2THAWF1"
+    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
   name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -244,7 +244,7 @@ resource "aws_route53_record" "crossfeed_staging_AAAA" {
 
   alias {
     name                   = "crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "ZMG1MZ2THAWF1"
+    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
   name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"

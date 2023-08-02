@@ -234,7 +234,7 @@ resource "aws_route53_record" "crossfeed_staging_A" {
     zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
-  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  name    = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "A"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
@@ -247,7 +247,7 @@ resource "aws_route53_record" "crossfeed_staging_AAAA" {
     zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
-  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  name    = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }

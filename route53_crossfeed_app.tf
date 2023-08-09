@@ -281,7 +281,7 @@ resource "aws_route53_record" "crossfeed_staging_MX" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
-resource "aws_route53_record" "crossfeed_staging_TXT" {
+resource "aws_route53_record" "crossfeed_staging_TXT1" {
   provider = aws.route53resourcechange
 
   name = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -291,6 +291,18 @@ resource "aws_route53_record" "crossfeed_staging_TXT" {
     "v=spf1 include:amazonses.com -all",
   ]
   ttl     = 300
+  type    = "TXT"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "crossfeed_staging_ACME_TXT" {
+  provider = aws.route53resourcechange
+
+  name = "_acme-challenge.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = [
+    "Ld5yh8SoLm2yZJzSYKqp8mxwbddlKQyGT6EJeYXw5YQ",
+  ]
+  ttl     = 3000
   type    = "TXT"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }

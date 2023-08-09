@@ -295,7 +295,7 @@ resource "aws_route53_record" "crossfeed_staging_ses_TXT" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
-resource "aws_route53_record" "crossfeed_staging_ACME_TXT" {
+resource "aws_route53_record" "crossfeed_staging_acme_TXT" {
   provider = aws.route53resourcechange
 
   name = "_acme-challenge.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"

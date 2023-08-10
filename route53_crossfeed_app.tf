@@ -374,6 +374,18 @@ resource "aws_route53_record" "crossfeed_staging_cd_api_CNAME" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
+resource "aws_route53_record" "crossfeed_staging_api_acme_TXT" {
+  provider = aws.route53resourcechange
+
+  name = "_acme-challenge.api.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = [
+    "D9aZtiYZlymXq2YJnR3eWA3mig1r_D7OSB_XZ_7u_OM",
+  ]
+  ttl     = 3000
+  type    = "TXT"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
 # ------------------------------------------------------------------------------
 # Staging SES entries
 # ------------------------------------------------------------------------------

@@ -303,7 +303,7 @@ resource "aws_route53_record" "crossfeed_staging_cd_api_A" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d2n7pvqicqw5zg.cloudfront.net."
+    name                   = "d2gj80j4xz3s5z.cloudfront.net."
     zone_id                = var.cloudfront_zone_id
     evaluate_target_health = false
   }
@@ -316,7 +316,7 @@ resource "aws_route53_record" "crossfeed_staging_cd_api_AAAA" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d2n7pvqicqw5zg.cloudfront.net."
+    name                   = "d2gj80j4xz3s5z.cloudfront.net."
     zone_id                = var.cloudfront_zone_id
     evaluate_target_health = false
   }

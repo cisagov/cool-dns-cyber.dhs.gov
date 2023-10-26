@@ -6,12 +6,14 @@
 # Prod entries
 # ------------------------------------------------------------------------------
 
+# The hosted_zone_id for the below records comes from https://docs.aws.amazon.com/general/latest/gr/elb.html
+# (ALBs in us-gov-west-1 region)
 resource "aws_route53_record" "crossfeed_prod_A" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d2urclllpa4h1x.cloudfront.net."
-    zone_id                = var.cloudfront_zone_id
+    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
+    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
   name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -23,22 +25,12 @@ resource "aws_route53_record" "crossfeed_prod_AAAA" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d2urclllpa4h1x.cloudfront.net."
-    zone_id                = var.cloudfront_zone_id
+    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
+    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
   name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_prod_acm_CNAME" {
-  provider = aws.route53resourcechange
-
-  name    = "_fb2df3ea0959566abf846bdb73696d75.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["_8ef30eecb0785429151594c13c049761.jfrzftwwjs.acm-validations.aws."]
-  ttl     = 300
-  type    = "CNAME"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
@@ -52,6 +44,7 @@ resource "aws_route53_record" "crossfeed_prod_docs_CNAME" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
+# TODO: What SES records do we need for the LZ AWS?
 resource "aws_route53_record" "crossfeed_prod_TXT" {
   provider = aws.route53resourcechange
 

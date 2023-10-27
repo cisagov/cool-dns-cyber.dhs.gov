@@ -52,8 +52,8 @@ resource "aws_route53_record" "crossfeed_prod_api_A" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d1iatsjalsmsuw.cloudfront.net."
-    zone_id                = var.cloudfront_zone_id
+    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
+    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
   name    = "api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -65,8 +65,8 @@ resource "aws_route53_record" "crossfeed_prod_api_AAAA" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d1iatsjalsmsuw.cloudfront.net."
-    zone_id                = var.cloudfront_zone_id
+    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
+    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
   name    = "api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"

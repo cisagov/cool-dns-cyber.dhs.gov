@@ -6,12 +6,14 @@
 # Prod entries
 # ------------------------------------------------------------------------------
 
+# The hosted_zone_id for the below records comes from https://docs.aws.amazon.com/general/latest/gr/elb.html
+# (ALBs in us-gov-west-1 region)
 resource "aws_route53_record" "crossfeed_prod_A" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d2urclllpa4h1x.cloudfront.net."
-    zone_id                = var.cloudfront_zone_id
+    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
+    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
   name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -23,22 +25,12 @@ resource "aws_route53_record" "crossfeed_prod_AAAA" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d2urclllpa4h1x.cloudfront.net."
-    zone_id                = var.cloudfront_zone_id
+    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
+    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
   name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_prod_acm_CNAME" {
-  provider = aws.route53resourcechange
-
-  name    = "_fb2df3ea0959566abf846bdb73696d75.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["_8ef30eecb0785429151594c13c049761.jfrzftwwjs.acm-validations.aws."]
-  ttl     = 300
-  type    = "CNAME"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
@@ -52,20 +44,6 @@ resource "aws_route53_record" "crossfeed_prod_docs_CNAME" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
-resource "aws_route53_record" "crossfeed_prod_TXT" {
-  provider = aws.route53resourcechange
-
-  name = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = [
-    "amazonses:rkxSP4d4VmzpdVhKoONkBFT8XYa/vJrCHgs5rs25/L4=",
-    "amazonses:UNxjvhzeNYcUJ9Bzs+vzfTC+KL+h8KgCrfWekL7vI9U=", # COOL
-    "v=spf1 include:amazonses.com -all",
-  ]
-  ttl     = 300
-  type    = "TXT"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
 # ------------------------------------------------------------------------------
 # Prod API entries
 # ------------------------------------------------------------------------------
@@ -74,8 +52,8 @@ resource "aws_route53_record" "crossfeed_prod_api_A" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d1iatsjalsmsuw.cloudfront.net."
-    zone_id                = var.cloudfront_zone_id
+    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
+    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
   name    = "api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -87,8 +65,8 @@ resource "aws_route53_record" "crossfeed_prod_api_AAAA" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d1iatsjalsmsuw.cloudfront.net."
-    zone_id                = var.cloudfront_zone_id
+    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
+    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
   name    = "api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -113,8 +91,8 @@ resource "aws_route53_record" "crossfeed_prod_api_acm_CNAME" {
 resource "aws_route53_record" "crossfeed_prod_dkim1_CNAME" {
   provider = aws.route53resourcechange
 
-  name    = "sw4dnn5djga24lcqm2p4hgzbr6bvtpiq._domainkey.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["sw4dnn5djga24lcqm2p4hgzbr6bvtpiq.dkim.amazonses.com"]
+  name    = "dzboeznslvck5kqcgnfgrnmg62rig7t2._domainkey.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["dzboeznslvck5kqcgnfgrnmg62rig7t2.dkim.amazonses.com"]
   ttl     = 300
   type    = "CNAME"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
@@ -123,8 +101,8 @@ resource "aws_route53_record" "crossfeed_prod_dkim1_CNAME" {
 resource "aws_route53_record" "crossfeed_prod_dkim2_CNAME" {
   provider = aws.route53resourcechange
 
-  name    = "vy6vyzrznjhmlkisuikprv7b7tx7qvz3._domainkey.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["vy6vyzrznjhmlkisuikprv7b7tx7qvz3.dkim.amazonses.com"]
+  name    = "6wpqhy2h6hmcp6dlkvidqucgvmohc65u._domainkey.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["6wpqhy2h6hmcp6dlkvidqucgvmohc65u.dkim.amazonses.com"]
   ttl     = 300
   type    = "CNAME"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
@@ -133,63 +111,10 @@ resource "aws_route53_record" "crossfeed_prod_dkim2_CNAME" {
 resource "aws_route53_record" "crossfeed_prod_dkim3_CNAME" {
   provider = aws.route53resourcechange
 
-  name    = "yhp7dyah7kpdgu22qskm7hqhyddoeu5z._domainkey.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["yhp7dyah7kpdgu22qskm7hqhyddoeu5z.dkim.amazonses.com"]
+  name    = "lcifzdqqdwmyuewt2wrhgecmvsiakiqi._domainkey.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["lcifzdqqdwmyuewt2wrhgecmvsiakiqi.dkim.amazonses.com"]
   ttl     = 300
   type    = "CNAME"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_cool_prod_dkim1_CNAME" {
-  provider = aws.route53resourcechange
-
-  name    = "5lhql4ooyzt66oy5u7ccywig34mmr3hw._domainkey.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["5lhql4ooyzt66oy5u7ccywig34mmr3hw.dkim.amazonses.com"]
-  ttl     = 300
-  type    = "CNAME"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_cool_prod_dkim2_CNAME" {
-  provider = aws.route53resourcechange
-
-  name    = "ligwjn4oa5gctkotd6vz55jfvdu3bp46._domainkey.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["ligwjn4oa5gctkotd6vz55jfvdu3bp46.dkim.amazonses.com"]
-  ttl     = 300
-  type    = "CNAME"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_cool_prod_dkim3_CNAME" {
-  provider = aws.route53resourcechange
-
-  name    = "qbuoawykv5o3tyzxzlctewoqccgr4l27._domainkey.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["qbuoawykv5o3tyzxzlctewoqccgr4l27.dkim.amazonses.com"]
-  ttl     = 300
-  type    = "CNAME"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_prod_MX" {
-  provider = aws.route53resourcechange
-
-  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["10 inbound-smtp.us-east-1.amazonaws.com"]
-  ttl     = 300
-  type    = "MX"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_prod_ses_TXT" {
-  provider = aws.route53resourcechange
-
-  name = "_amazonses.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = [
-    "rkxSP4d4VmzpdVhKoONkBFT8XYa/vJrCHgs5rs25/L4=",
-    "UNxjvhzeNYcUJ9Bzs+vzfTC+KL+h8KgCrfWekL7vI9U=", # COOL
-  ]
-  ttl     = 300
-  type    = "TXT"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
@@ -393,6 +318,36 @@ resource "aws_route53_record" "crossfeed_staging_api_acme_TXT" {
 resource "aws_route53_record" "crossfeed_staging_dkim1_CNAME" {
   provider = aws.route53resourcechange
 
+  name    = "xeabzav4tgtboc5wwbhu2bx25buatdfi._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["xeabzav4tgtboc5wwbhu2bx25buatdfi.dkim.amazonses.com"]
+  ttl     = 300
+  type    = "CNAME"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "crossfeed_staging_dkim2_CNAME" {
+  provider = aws.route53resourcechange
+
+  name    = "rnscye3ptl2izjxivoefxcrs3xsja2sr._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["rnscye3ptl2izjxivoefxcrs3xsja2sr.dkim.amazonses.com"]
+  ttl     = 300
+  type    = "CNAME"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "crossfeed_staging_dkim3_CNAME" {
+  provider = aws.route53resourcechange
+
+  name    = "t4n7gyy6rlyzgjfayzgmyq4heevjmq4n._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["t4n7gyy6rlyzgjfayzgmyq4heevjmq4n.dkim.amazonses.com"]
+  ttl     = 300
+  type    = "CNAME"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "crossfeed_staging_cd_dkim1_CNAME" {
+  provider = aws.route53resourcechange
+
   name    = "7mu6wejrss5bnby2d4jnnrznr7fk6py6._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = ["7mu6wejrss5bnby2d4jnnrznr7fk6py6.dkim.amazonses.com"]
   ttl     = 300
@@ -400,7 +355,7 @@ resource "aws_route53_record" "crossfeed_staging_dkim1_CNAME" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
-resource "aws_route53_record" "crossfeed_staging_dkim2_CNAME" {
+resource "aws_route53_record" "crossfeed_staging_cd_dkim2_CNAME" {
   provider = aws.route53resourcechange
 
   name    = "leycxxpxpvcxgli34u7a3mmvcdgojqdf._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -410,55 +365,12 @@ resource "aws_route53_record" "crossfeed_staging_dkim2_CNAME" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
-resource "aws_route53_record" "crossfeed_staging_dkim3_CNAME" {
+resource "aws_route53_record" "crossfeed_staging_cd_dkim3_CNAME" {
   provider = aws.route53resourcechange
 
   name    = "zhnkkpsqkxlh6xdjhvs4uluderyicadh._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = ["zhnkkpsqkxlh6xdjhvs4uluderyicadh.dkim.amazonses.com"]
   ttl     = 300
   type    = "CNAME"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_cool_staging_dkim1_CNAME" {
-  provider = aws.route53resourcechange
-
-  name    = "fndugqqyzkqvcw6esqcajm4kplwsj4cl._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["fndugqqyzkqvcw6esqcajm4kplwsj4cl.dkim.amazonses.com"]
-  ttl     = 300
-  type    = "CNAME"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_cool_staging_dkim2_CNAME" {
-  provider = aws.route53resourcechange
-
-  name    = "ajkrqvc47hndkou3ynietdzkybpvrvdn._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["ajkrqvc47hndkou3ynietdzkybpvrvdn.dkim.amazonses.com"]
-  ttl     = 300
-  type    = "CNAME"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_cool_staging_dkim3_CNAME" {
-  provider = aws.route53resourcechange
-
-  name    = "ocfzdkfrvb2sop6mbqhrxmkmzqgnnhux._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["ocfzdkfrvb2sop6mbqhrxmkmzqgnnhux.dkim.amazonses.com"]
-  ttl     = 300
-  type    = "CNAME"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_staging_ses_TXT" {
-  provider = aws.route53resourcechange
-
-  name = "_amazonses.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = [
-    "rv6QdeDe1r8/Hn5HkSmfO8FttR8A8/2pHXtsLEHQI34=",
-    "8YPbpAkOE6Z1kvYhSuV2W8KG0To0SjQrP6nm/xpilR0=", # COOL
-  ]
-  ttl     = 300
-  type    = "TXT"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }

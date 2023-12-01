@@ -12,22 +12,23 @@ zone.  This role has a trust relationship with the users account.
 1. Run the command `terraform init`.
 1. Run the command `terraform apply`.
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements ##
 
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.0 |
-| aws | ~> 3.38 |
+| aws | ~> 4.9 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.38 |
-| aws.acmresourcechange | ~> 3.38 |
-| aws.dnsprovisionaccount | ~> 3.38 |
-| aws.organizationsreadonly | ~> 3.38 |
-| aws.route53resourcechange | ~> 3.38 |
+| aws | ~> 4.9 |
+| aws.acmresourcechange | ~> 4.9 |
+| aws.dnsprovisionaccount | ~> 4.9 |
+| aws.organizationsreadonly | ~> 4.9 |
+| aws.route53resourcechange | ~> 4.9 |
 | terraform | n/a |
 
 ## Modules ##
@@ -170,6 +171,7 @@ zone.  This role has a trust relationship with the users account.
 | route53resourcechange\_role | IAM role that allows sufficient permissions to modify resource records in the cyber.dhs.gov zone. |
 | sesmanagesuppressionlist\_role | IAM role that allows sufficient permissions to manage the AWS SES suppression list. |
 | sessendemail\_role | IAM role that allows sufficient permissions to send email via AWS SES. |
+<!-- END_TF_DOCS -->
 
 ## Notes ##
 

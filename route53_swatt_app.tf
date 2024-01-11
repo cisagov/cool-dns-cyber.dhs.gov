@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Resource records that support SWATT
+# Resource records that support SWATT (Software Attestation)
 
 # ------------------------------------------------------------------------------
 # Staging entries

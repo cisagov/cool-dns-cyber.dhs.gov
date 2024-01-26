@@ -14,6 +14,7 @@ resource "aws_route53_record" "rsaa_dev_CNAME" {
   type     = "CNAME"
   zone_id  = aws_route53_zone.cyber_dhs_gov.zone_id
 }
+
 # ------------------------------------------------------------------------------
 # Staging entries
 # ------------------------------------------------------------------------------

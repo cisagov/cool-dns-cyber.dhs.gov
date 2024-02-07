@@ -127,7 +127,7 @@ resource "aws_route53_record" "crossfeed_staging_cd_A" {
 
   alias {
     name                   = "ljgrfkavt7.execute-api.us-east-1.amazonaws.com."
-    zone_id                = var.api_gateway_east_1_zone_id
+    zone_id                = var.api_gateway_zone_id
     evaluate_target_health = false
   }
   name    = "staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -140,7 +140,7 @@ resource "aws_route53_record" "crossfeed_staging_cd_AAAA" {
 
   alias {
     name                   = "ljgrfkavt7.execute-api.us-east-1.amazonaws.com."
-    zone_id                = var.api_gateway_east_1_zone_id
+    zone_id                = var.api_gateway_zone_id
     evaluate_target_health = false
   }
   name    = "staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"

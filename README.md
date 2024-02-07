@@ -13,14 +13,14 @@ zone.  This role has a trust relationship with the users account.
 1. Run the command `terraform apply`.
 
 <!-- BEGIN_TF_DOCS -->
-## Requirements ##
+## Requirements
 
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.0 |
 | aws | ~> 4.9 |
 
-## Providers ##
+## Providers
 
 | Name | Version |
 |------|---------|
@@ -31,13 +31,13 @@ zone.  This role has a trust relationship with the users account.
 | aws.route53resourcechange | ~> 4.9 |
 | terraform | n/a |
 
-## Modules ##
+## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | read\_terraform\_state | github.com/cisagov/terraform-state-read-role-tf-module | n/a |
 
-## Resources ##
+## Resources
 
 | Name | Type |
 |------|------|
@@ -106,6 +106,7 @@ zone.  This role has a trust relationship with the users account.
 | [aws_route53_record.root_MX](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.root_SPF](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.root_acm_rules_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.rsaa_dev_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.rsaa_stage_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.rules_certificate_validation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.rules_ncats_A](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -143,7 +144,7 @@ zone.  This role has a trust relationship with the users account.
 | [terraform_remote_state.pca_staging](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 | [terraform_remote_state.terraform](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
-## Inputs ##
+## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -151,10 +152,9 @@ zone.  This role has a trust relationship with the users account.
 | acmresourcechange\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. | `string` | `"ACMResourceChange"` | no |
 | additional\_remote\_state\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to read this root module's remote state (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
 | additional\_ses\_sendemail\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to send email via AWS SES (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
-| api\_gateway\_east\_1\_zone\_id | The Route 53 hosted zone ID for For us-east-1 endpoints. | `string` | `"Z1UJRXOUMOOFQ8"` | no |
-| api\_gateway\_edge\_zone\_id | The Route 53 hosted zone ID for For edge-optimized endpoints. | `string` | `"Z2FDTNDATAQYW2"` | no |
+| api\_gateway\_edge\_zone\_id | The Route 53 hosted zone ID for edge-optimized endpoints. | `string` | `"Z2FDTNDATAQYW2"` | no |
+| api\_gateway\_zone\_id | The Route 53 hosted zone ID for us-east-1 endpoints. | `string` | `"Z1UJRXOUMOOFQ8"` | no |
 | aws\_region | The AWS region to communicate with. | `string` | `"us-east-1"` | no |
-| cloudfront\_zone\_id | The ID of the Cloudfront hosted zone. This is set by AWS and is a constant across all Cloudfront distributions. | `string` | `"Z2FDTNDATAQYW2"` | no |
 | cyhy\_account\_id | The ID of the CyHy account. | `string` | n/a | yes |
 | read\_terraform\_state\_role\_name | The name to assign the IAM role and policy that allows read-only access to the cool-dns-cyber.dhs.gov state in the S3 bucket where Terraform state is stored. | `string` | `"ReadCyberDhsGovTerraformState"` | no |
 | route53resourcechange\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify resource records in the DNS zone. | `string` | `"Allows sufficient permissions to modify resource records in the DNS zone."` | no |
@@ -165,7 +165,7 @@ zone.  This role has a trust relationship with the users account.
 | sessendemail\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES. | `string` | `"SesSendEmail-cyber.dhs.gov"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 
-## Outputs ##
+## Outputs
 
 | Name | Description |
 |------|-------------|

@@ -126,7 +126,7 @@ resource "aws_route53_record" "crossfeed_staging_cd_A" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "ljgrfkavt7.execute-api.us-east-1.amazonaws.com."
+    name                   = "d-0yk2b6imci.execute-api.us-east-1.amazonaws.com."
     zone_id                = var.api_gateway_zone_id
     evaluate_target_health = false
   }
@@ -139,7 +139,7 @@ resource "aws_route53_record" "crossfeed_staging_cd_AAAA" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "ljgrfkavt7.execute-api.us-east-1.amazonaws.com."
+    name                   = "d-0yk2b6imci.execute-api.us-east-1.amazonaws.com."
     zone_id                = var.api_gateway_zone_id
     evaluate_target_health = false
   }
@@ -240,7 +240,7 @@ resource "aws_route53_record" "crossfeed_staging_cd_api_A" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "mkrl99gnu9.execute-api.us-east-1.amazonaws.com."
+    name                   = "d-y5130perp8.execute-api.us-east-1.amazonaws.com."
     zone_id                = var.api_gateway_zone_id
     evaluate_target_health = false
   }
@@ -253,7 +253,7 @@ resource "aws_route53_record" "crossfeed_staging_cd_api_AAAA" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "mkrl99gnu9.execute-api.us-east-1.amazonaws.com."
+    name                   = "d-y5130perp8.execute-api.us-east-1.amazonaws.com."
     zone_id                = var.api_gateway_zone_id
     evaluate_target_health = false
   }

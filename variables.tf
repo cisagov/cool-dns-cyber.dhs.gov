@@ -41,7 +41,7 @@ variable "additional_ses_sendemail_account_ids" {
 
 variable "api_gateway_zone_id" {
   type        = string
-  description = "The Route 53 hosted zone ID for API Gateways."
+  description = "The Route 53 hosted zone ID for API gateways."
   default     = "Z1UJRXOUMOOFQ8"
 }
 

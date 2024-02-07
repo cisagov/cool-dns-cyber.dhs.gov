@@ -45,9 +45,15 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "cloudfront_zone_id" {
+variable "api_gateway_east_1_zone_id" {
   type        = string
-  description = "The ID of the Cloudfront hosted zone. This is set by AWS and is a constant across all Cloudfront distributions."
+  description = "The Route 53 hosted zone ID for For us-east-1 endpoints."
+  default     = "Z1UJRXOUMOOFQ8"
+}
+
+variable "api_gateway_edge_zone_id" {
+  type        = string
+  description = "The Route 53 hosted zone ID for For edge-optimized endpoints."
   default     = "Z2FDTNDATAQYW2"
 }
 

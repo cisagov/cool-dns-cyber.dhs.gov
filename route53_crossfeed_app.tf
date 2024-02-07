@@ -126,8 +126,8 @@ resource "aws_route53_record" "crossfeed_staging_cd_A" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "do8d5i2re25cf.cloudfront.net."
-    zone_id                = var.cloudfront_zone_id
+    name                   = "ljgrfkavt7.execute-api.us-east-1.amazonaws.com."
+    zone_id                = var.api_gateway_east_1_zone_id
     evaluate_target_health = false
   }
   name    = "staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -139,8 +139,8 @@ resource "aws_route53_record" "crossfeed_staging_cd_AAAA" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "do8d5i2re25cf.cloudfront.net."
-    zone_id                = var.cloudfront_zone_id
+    name                   = "ljgrfkavt7.execute-api.us-east-1.amazonaws.com."
+    zone_id                = var.api_gateway_east_1_zone_id
     evaluate_target_health = false
   }
   name    = "staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -240,8 +240,8 @@ resource "aws_route53_record" "crossfeed_staging_cd_api_A" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d2gj80j4xz3s5z.cloudfront.net."
-    zone_id                = var.cloudfront_zone_id
+    name                   = "mkrl99gnu9.execute-api.us-east-1.amazonaws.com."
+    zone_id                = var.api_gateway_edge_zone_id
     evaluate_target_health = false
   }
   name    = "api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -253,8 +253,8 @@ resource "aws_route53_record" "crossfeed_staging_cd_api_AAAA" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d2gj80j4xz3s5z.cloudfront.net."
-    zone_id                = var.cloudfront_zone_id
+    name                   = "mkrl99gnu9.execute-api.us-east-1.amazonaws.com."
+    zone_id                = var.api_gateway_edge_zone_id
     evaluate_target_health = false
   }
   name    = "api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"

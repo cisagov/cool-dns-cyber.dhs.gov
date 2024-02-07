@@ -1,14 +1,14 @@
 # ------------------------------------------------------------------------------
-# Resource records that support SADR
+# Resource records that support SWATT (Software Attestation)
 
 # ------------------------------------------------------------------------------
 # Staging entries
 # ------------------------------------------------------------------------------
 
-resource "aws_route53_record" "sadr_stage_CNAME" {
+resource "aws_route53_record" "swatt_stage_CNAME" {
   provider = aws.route53resourcechange
-  name     = "staging.sadr.${aws_route53_zone.cyber_dhs_gov.name}"
-  records  = ["sadr-stage-1940583289.us-gov-west-1.elb.amazonaws.com"]
+  name     = "staging.swatt.${aws_route53_zone.cyber_dhs_gov.name}"
+  records  = ["swatt-stage-2051905077.us-gov-west-1.elb.amazonaws.com"]
   ttl      = 300
   type     = "CNAME"
   zone_id  = aws_route53_zone.cyber_dhs_gov.zone_id

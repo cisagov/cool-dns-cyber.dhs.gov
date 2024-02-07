@@ -225,7 +225,7 @@ resource "aws_route53_record" "crossfeed_staging_acme_TXT" {
 
   name = "_acme-challenge.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "x4OZIl79RabndS-x_tcbgJhg0_LpWu6nk-w0RR5j4PY",
+    "AjujZpKd_IdUxJKOiczsDCCsUoUicAkTeVL52cXiVWc",
   ]
   ttl     = 3000
   type    = "TXT"
@@ -316,7 +316,7 @@ resource "aws_route53_record" "crossfeed_staging_api_acme_TXT" {
 
   name = "_acme-challenge.api.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "R4n3EyR5INrjhD7aoq26AVCM1VOwNUfEd9CrIU9AoCs",
+    "Ex05wBdGQeoEu8kuI2zmTwz4tQx-7ShKYBnL-IbNy4A",
   ]
   ttl     = 3000
   type    = "TXT"

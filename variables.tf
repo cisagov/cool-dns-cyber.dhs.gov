@@ -39,12 +39,6 @@ variable "additional_ses_sendemail_account_ids" {
   default     = []
 }
 
-variable "api_gateway_edge_zone_id" {
-  type        = string
-  description = "The Route 53 hosted zone ID for edge-optimized endpoints."
-  default     = "Z2FDTNDATAQYW2"
-}
-
 variable "api_gateway_zone_id" {
   type        = string
   description = "The Route 53 hosted zone ID for us-east-1 endpoints."

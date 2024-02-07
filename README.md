@@ -152,7 +152,6 @@ zone.  This role has a trust relationship with the users account.
 | acmresourcechange\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. | `string` | `"ACMResourceChange"` | no |
 | additional\_remote\_state\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to read this root module's remote state (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
 | additional\_ses\_sendemail\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to send email via AWS SES (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
-| api\_gateway\_edge\_zone\_id | The Route 53 hosted zone ID for edge-optimized endpoints. | `string` | `"Z2FDTNDATAQYW2"` | no |
 | api\_gateway\_zone\_id | The Route 53 hosted zone ID for us-east-1 endpoints. | `string` | `"Z1UJRXOUMOOFQ8"` | no |
 | aws\_region | The AWS region to communicate with. | `string` | `"us-east-1"` | no |
 | cyhy\_account\_id | The ID of the CyHy account. | `string` | n/a | yes |

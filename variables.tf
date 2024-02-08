@@ -39,16 +39,16 @@ variable "additional_ses_sendemail_account_ids" {
   default     = []
 }
 
+variable "api_gateway_zone_id" {
+  type        = string
+  description = "The Route 53 hosted zone ID for API gateways."
+  default     = "Z1UJRXOUMOOFQ8"
+}
+
 variable "aws_region" {
   type        = string
   description = "The AWS region to communicate with."
   default     = "us-east-1"
-}
-
-variable "cloudfront_zone_id" {
-  type        = string
-  description = "The ID of the Cloudfront hosted zone. This is set by AWS and is a constant across all Cloudfront distributions."
-  default     = "Z2FDTNDATAQYW2"
 }
 
 variable "read_terraform_state_role_name" {

@@ -154,8 +154,8 @@ zone.  This role has a trust relationship with the users account.
 | acmresourcechange\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. | `string` | `"ACMResourceChange"` | no |
 | additional\_remote\_state\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to read this root module's remote state (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
 | additional\_ses\_sendemail\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to send email via AWS SES (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
+| api\_gateway\_zone\_id | The Route 53 hosted zone ID for API gateways. | `string` | `"Z1UJRXOUMOOFQ8"` | no |
 | aws\_region | The AWS region to communicate with. | `string` | `"us-east-1"` | no |
-| cloudfront\_zone\_id | The ID of the Cloudfront hosted zone. This is set by AWS and is a constant across all Cloudfront distributions. | `string` | `"Z2FDTNDATAQYW2"` | no |
 | cyhy\_account\_id | The ID of the CyHy account. | `string` | n/a | yes |
 | read\_terraform\_state\_role\_name | The name to assign the IAM role and policy that allows read-only access to the cool-dns-cyber.dhs.gov state in the S3 bucket where Terraform state is stored. | `string` | `"ReadCyberDhsGovTerraformState"` | no |
 | route53resourcechange\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify resource records in the DNS zone. | `string` | `"Allows sufficient permissions to modify resource records in the DNS zone."` | no |

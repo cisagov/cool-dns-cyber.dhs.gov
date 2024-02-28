@@ -47,9 +47,9 @@ resource "aws_route53_record" "crossfeed_prod_docs_CNAME" {
 resource "aws_route53_record" "crossfeed_prod_acme_TXT" {
   provider = aws.route53resourcechange
 
-  name = "_acme-challenge.prod.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  name = "_acme-challenge.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "AjujZpKd_IdUxJKOiczsDCCsUoUicAkTeVL52cXiVWc",
+    "ct0l3YNdaIble-FQ0CgaGrurEcZAVPn6OrphYnXmcRM",
   ]
   ttl     = 3000
   type    = "TXT"

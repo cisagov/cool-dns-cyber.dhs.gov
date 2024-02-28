@@ -44,6 +44,18 @@ resource "aws_route53_record" "crossfeed_prod_docs_CNAME" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
+resource "aws_route53_record" "crossfeed_prod_acme_TXT" {
+  provider = aws.route53resourcechange
+
+  name = "_acme-challenge.prod.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = [
+    "AjujZpKd_IdUxJKOiczsDCCsUoUicAkTeVL52cXiVWc",
+  ]
+  ttl     = 3000
+  type    = "TXT"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
 # ------------------------------------------------------------------------------
 # Prod API entries
 # ------------------------------------------------------------------------------
@@ -81,6 +93,18 @@ resource "aws_route53_record" "crossfeed_prod_api_acm_CNAME" {
   records = ["_829d98e4bbf4eeaae36108a98a720ce2.jfrzftwwjs.acm-validations.aws."]
   ttl     = 300
   type    = "CNAME"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "crossfeed_prod_api_acme_TXT" {
+  provider = aws.route53resourcechange
+
+  name = "_acme-challenge.api.prod.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = [
+    "Ex05wBdGQeoEu8kuI2zmTwz4tQx-7ShKYBnL-IbNy4A",
+  ]
+  ttl     = 3000
+  type    = "TXT"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 

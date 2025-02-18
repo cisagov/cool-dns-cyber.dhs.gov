@@ -17,7 +17,7 @@ zone.  This role has a trust relationship with the users account.
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 1.0 |
+| terraform | ~> 1.1 |
 | aws | ~> 5.20 |
 
 ## Providers ##
@@ -144,6 +144,7 @@ zone.  This role has a trust relationship with the users account.
 | [aws_route53_record.rules_ncats_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.staging_ready_set_cyber_prod_AAAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.staging_ready_set_cyber_staging_A](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.vincent_dev_cert_verify_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.vincent_dev_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.vincent_stage_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.vip_ncats_A](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |

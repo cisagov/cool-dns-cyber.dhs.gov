@@ -10,11 +10,22 @@ resource "aws_route53_record" "vincent_dev_CNAME" {
   provider = aws.route53resourcechange
 
   name    = "dev.vincent.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["vincent-dev-13498182.us-gov-west-1.elb.amazonaws.com"]
+  records = ["dmm9ihx0h3npb.cloudfront.net"]
   ttl     = 300
   type    = "CNAME"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
+
+resource "aws_route53_record" "vincent_dev_cert_verify_CNAME" {
+  provider = aws.route53resourcechange
+
+  name    = "_21b5e6882ded3469340d1e8fa8fd20a4.dev.vincent.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["_a3c44409a70b3bd17f97ef3ff3b831e5.djqtsrsxkq.acm-validations.aws"]
+  ttl     = 300
+  type    = "CNAME"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
 
 # ------------------------------------------------------------------------------
 # Staging entries

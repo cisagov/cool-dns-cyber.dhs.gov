@@ -399,7 +399,7 @@ resource "aws_route53_record" "crossfeed_integration_api_TXT" {
 
   name = "_acme-challenge.api.integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "CtK30gpf_LPEfeaCkm1Ynae9qUlJCQWnYGSWGyHU8bc",
+    "dVG-uxp-WN4blWmBgUpE8CDb7ZEBB93eeQKifIt33oQ",
   ]
   ttl     = 3000
   type    = "TXT"

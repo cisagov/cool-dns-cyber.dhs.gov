@@ -33,36 +33,6 @@ data "terraform_remote_state" "master" {
   workspace = "production"
 }
 
-data "terraform_remote_state" "pca_production" {
-  backend = "s3"
-
-  config = {
-    encrypt        = true
-    bucket         = "cisa-cool-terraform-state"
-    dynamodb_table = "terraform-state-lock"
-    profile        = "cool-terraform-backend"
-    region         = "us-east-1"
-    key            = "con-pca-cicd/terraform.tfstate"
-  }
-
-  workspace = "production"
-}
-
-data "terraform_remote_state" "pca_staging" {
-  backend = "s3"
-
-  config = {
-    encrypt        = true
-    bucket         = "cisa-cool-terraform-state"
-    dynamodb_table = "terraform-state-lock"
-    profile        = "cool-terraform-backend"
-    region         = "us-east-1"
-    key            = "con-pca-cicd/terraform.tfstate"
-  }
-
-  workspace = "staging"
-}
-
 data "terraform_remote_state" "terraform" {
   backend = "s3"
 

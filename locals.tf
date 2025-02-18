@@ -25,24 +25,6 @@ locals {
     x.id if x.name == "DNS"
   ][0]
 
-  # Find the Domain Manager accounts by name
-  domainmanager_account_ids = [
-    for x in data.aws_organizations_organization.cool.accounts :
-    x.id if length(regexall("^Domain Manager \\((?:Staging|Production)\\)$", x.name)) > 0
-  ]
-
-  # Find the INL accounts by name
-  inl_account_ids = [
-    for x in data.aws_organizations_organization.cool.accounts :
-    x.id if length(regexall("^inl\\d+ \\((?:Staging|Production)\\)$", x.name)) > 0
-  ]
-
-  # Find the PCA accounts by name
-  pca_account_ids = [
-    for x in data.aws_organizations_organization.cool.accounts :
-    x.id if length(regexall("^PCA \\((?:Staging|Production)\\)$", x.name)) > 0
-  ]
-
   # Find the Users account by name.
   users_account_id = [
     for x in data.aws_organizations_organization.cool.accounts :

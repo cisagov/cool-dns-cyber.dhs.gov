@@ -357,7 +357,7 @@ resource "aws_route53_record" "crossfeed_integration_acme_TXT" {
 
   name = "_acme-challenge.integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "HtrLpSbDjNcA9ZfrEw41G78bco0lZz1AxaLNgR7YmWs",
+    "j0VBe_uiJnGXevUx5bjypNetTrG1eoeB7bnsY1JuKY8",
   ]
   ttl     = 3000
   type    = "TXT"

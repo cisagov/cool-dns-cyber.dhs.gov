@@ -479,7 +479,7 @@ resource "aws_route53_record" "crossfeed_staging_cd_TXT" {
 
   name = "_acme-challenge.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "Yu58IyT5wJzQPL0NrwB2Ne4203UXetJKbALe64qk9gg",
+    "M8BmtBxIO6u0zaEhmbd2XMk6ed2qg_BSjnpn1yJAiVM",
   ]
   ttl     = 3000
   type    = "TXT"

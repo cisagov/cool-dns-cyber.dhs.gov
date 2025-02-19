@@ -37,6 +37,13 @@ variable "additional_remote_state_account_ids" {
   type        = list(string)
 }
 
+variable "additional_route53_resource_change_account_ids" {
+  default     = []
+  description = "A list of account IDs corresponding to additional accounts that should have permission to assume the role to create and modify resource records in the cyber.dhs.gov zone (e.g. [\"123456789012\"])."
+  nullable    = false
+  type        = list(string)
+}
+
 variable "additional_ses_sendemail_account_ids" {
   default     = []
   description = "A list of account IDs corresponding to additional accounts that should have permission to assume the role to send email via AWS SES (e.g. [\"123456789012\"])."

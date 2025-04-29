@@ -197,6 +197,7 @@ zone.  This role has a trust relationship with the users account.
 | sessendemail\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES. | `string` | `"Allows sufficient permissions to send email via AWS SES."` | no |
 | sessendemail\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES. | `string` | `"SesSendEmail-cyber.dhs.gov"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
+| terraform\_state\_bucket | The name of the S3 bucket where Terraform state is stored. | `string` | n/a | yes |
 
 ## Outputs ##
 

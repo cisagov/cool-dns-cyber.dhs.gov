@@ -18,8 +18,10 @@ module "read_terraform_state" {
     local.users_account_id
   ], var.additional_remote_state_account_ids))
   # Don't create the assume role policy
-  create_assume_role          = false
-  role_name                   = var.read_terraform_state_role_name
+  create_assume_role = false
+  role_name          = var.read_terraform_state_role_name
+  # There is only one currently-supported bucket for this remote state, so we
+  # must use it.
   terraform_state_bucket_name = "cisa-cool-terraform-state"
   terraform_state_path        = "cool-dns-cyber.dhs.gov.tfstate"
 }

@@ -14,8 +14,9 @@ resource "aws_route53_record" "cyber_hygiene_prod_A" {
 
   alias {
     name                   = "crossfeed‑prod‑1638162291.us‑gov‑west‑1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
+
   }
   name    = "cyber‑hygiene.${data.aws_route53_zone.cisa_dhs_gov.name}"
   type    = "A"
@@ -28,8 +29,9 @@ resource "aws_route53_record" "cyber_hygiene_prod_AAAA" {
 
   alias {
     name                   = "crossfeed‑prod‑1638162291.us‑gov‑west‑1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
+
   }
   name    = "cyber‑hygiene.${data.aws_route53_zone.cisa_dhs_gov.name}"
   type    = "AAAA"

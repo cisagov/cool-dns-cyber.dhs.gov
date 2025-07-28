@@ -8,30 +8,46 @@
 
 # The hosted_zone_id for the below records comes from https://docs.aws.amazon.com/general/latest/gr/elb.html
 # (ALBs in us-gov-west-1 region)
-resource "aws_route53_record" "crossfeed_prod_A" {
+# A‑record alias for cyber‑hygeine.cisa.dhs.gov → your ALB
+resource "aws_route53_record" "cyber_hygiene_prod_A" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
-    evaluate_target_health = false
+    name                   = "crossfeed‑prod‑1638162291.us‑gov‑west‑1.elb.amazonaws.com."
     zone_id                = "Z33AYJ8TM3BH4J"
+    evaluate_target_health = false
   }
-  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  name    = "cyber‑hygeine.${aws_route53_zone.cisa_dhs_gov.name}"
   type    = "A"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+  zone_id = aws_route53_zone.cisa_dhs_gov.zone_id
 }
 
-resource "aws_route53_record" "crossfeed_prod_AAAA" {
+# AAAA‑record alias for IPv6
+resource "aws_route53_record" "cyber_hygiene_prod_AAAA" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
-    evaluate_target_health = false
+    name                   = "crossfeed‑prod‑1638162291.us‑gov‑west‑1.elb.amazonaws.com."
     zone_id                = "Z33AYJ8TM3BH4J"
+    evaluate_target_health = false
   }
-  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  name    = "cyber‑hygeine.${aws_route53_zone.cisa_dhs_gov.name}"
   type    = "AAAA"
+  zone_id = aws_route53_zone.cisa_dhs_gov.zone_id
+}
+
+#CNAME so crossfeed.cyber.dhs.gov → cyber‑hygiene.cisa.dhs.gov
+resource "aws_route53_record" "crossfeed_prod_CNAME" {
+  provider = aws.route53resourcechange
+
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  type    = "CNAME"
+  ttl     = 300
+
+  records = [
+    "cyber‑hygiene.cisa.dhs.gov.",
+  ]
 }
 
 resource "aws_route53_record" "crossfeed_prod_docs_CNAME" {

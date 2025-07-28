@@ -167,6 +167,7 @@ zone.  This role has a trust relationship with the users account.
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.acmresourcechange_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.route53resourcechange_assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.route53resourcechange_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.sesmanagesuppressionlist_assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.sesmanagesuppressionlist_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -184,6 +185,7 @@ zone.  This role has a trust relationship with the users account.
 | acmresourcechange\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. | `string` | `"Allows sufficient permissions to modify ACM resources in the DNS account."` | no |
 | acmresourcechange\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. | `string` | `"ACMResourceChange"` | no |
 | additional\_remote\_state\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to read this root module's remote state (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
+| additional\_route53\_resource\_change\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to create and modify resource records in the cyber.dhs.gov zone (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
 | additional\_ses\_sendemail\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to send email via AWS SES (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
 | api\_gateway\_zone\_id | The Route 53 hosted zone ID for API gateways. | `string` | `"Z1UJRXOUMOOFQ8"` | no |
 | aws\_region | The AWS region to communicate with. | `string` | `"us-east-1"` | no |

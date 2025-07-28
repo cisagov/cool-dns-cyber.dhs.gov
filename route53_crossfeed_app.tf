@@ -17,9 +17,9 @@ resource "aws_route53_record" "cyber_hygiene_prod_A" {
     zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
-  name    = "cyber‑hygeine.${aws_route53_zone.cisa_dhs_gov.name}"
+  name    = "cyber‑hygiene.${data.aws_route53_zone.cisa_dhs_gov.name}"
   type    = "A"
-  zone_id = aws_route53_zone.cisa_dhs_gov.zone_id
+  zone_id = data.aws_route53_zone.cisa_dhs_gov.zone_id
 }
 
 # AAAA‑record alias for IPv6
@@ -31,9 +31,9 @@ resource "aws_route53_record" "cyber_hygiene_prod_AAAA" {
     zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
-  name    = "cyber‑hygeine.${aws_route53_zone.cisa_dhs_gov.name}"
+  name    = "cyber‑hygiene.${data.aws_route53_zone.cisa_dhs_gov.name}"
   type    = "AAAA"
-  zone_id = aws_route53_zone.cisa_dhs_gov.zone_id
+  zone_id = data.aws_route53_zone.cisa_dhs_gov.zone_id
 }
 
 #CNAME so crossfeed.cyber.dhs.gov → cyber‑hygiene.cisa.dhs.gov

@@ -22,7 +22,7 @@ resource "aws_route53_record" "crossfeed_prod_CNAME" {
   name    = "crossfeed.${data.aws_route53_zone.cyber_dhs_gov.name}"
   ttl     = 300
   type    = "CNAME"
-  zone_id = data.aws_route53_zone.cyber_dhs_gov.zone_id
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 
   records = [
     "cyber-hygiene.cisa.dhs.gov.",

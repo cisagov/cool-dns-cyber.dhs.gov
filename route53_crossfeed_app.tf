@@ -11,11 +11,6 @@ data "aws_route53_zone" "cyber_dhs_gov" {
   private_zone = false
 }
 
-data "aws_route53_zone" "cisa_dhs_gov" {
-  provider     = aws.route53resourcechange
-  name         = "cisa.dhs.gov"
-  private_zone = false
-}
 # ------------------------------------------------------------------------------
 # Prod entries
 # ------------------------------------------------------------------------------

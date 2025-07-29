@@ -81,16 +81,6 @@ resource "aws_route53_record" "crossfeed_prod_api_AAAA" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
-resource "aws_route53_record" "crossfeed_prod_digicert_CAA" {
-  provider = aws.route53resourcechange
-
-  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["0 issue \"digicert.com\""]
-  ttl     = 3600
-  type    = "CAA"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
 resource "aws_route53_record" "api_crossfeed_prod_digicert_CAA" {
   provider = aws.route53resourcechange
 

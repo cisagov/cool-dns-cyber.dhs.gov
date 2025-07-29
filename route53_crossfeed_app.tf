@@ -2,53 +2,67 @@
 # Resource records that support Crossfeed site cloudfront endpoints and application.
 # ------------------------------------------------------------------------------
 
+###############################################################################
+# Look up the existing hosted zones for both cyber.dhs.gov and cisa.dhs.gov
+###############################################################################
+data "aws_route53_zone" "cyber_dhs_gov" {
+  provider     = aws.route53resourcechange
+  name         = "cyber.dhs.gov"
+  private_zone = false
+}
+
+data "aws_route53_zone" "cisa_dhs_gov" {
+  provider     = aws.route53resourcechange
+  name         = "cisa.dhs.gov"
+  private_zone = false
+}
 # ------------------------------------------------------------------------------
 # Prod entries
 # ------------------------------------------------------------------------------
 
 # The hosted_zone_id for the below records comes from https://docs.aws.amazon.com/general/latest/gr/elb.html
 # (ALBs in us-gov-west-1 region)
-# A‑record alias for cyber‑hygeine.cisa.dhs.gov → your ALB
+# A‑record alias for cyber‑hygiene.cisa.dhs.gov → your ALB (IPv4)
 resource "aws_route53_record" "cyber_hygiene_prod_A" {
   provider = aws.route53resourcechange
 
-  alias {
-    name                   = "crossfeed‑prod‑1638162291.us‑gov‑west‑1.elb.amazonaws.com."
-    evaluate_target_health = false
-    zone_id                = "Z33AYJ8TM3BH4J"
-
-  }
-  name    = "cyber‑hygiene.${data.aws_route53_zone.cisa_dhs_gov.name}"
+  name    = "cyber-hygiene.${data.aws_route53_zone.cisa_dhs_gov.name}"
   type    = "A"
   zone_id = data.aws_route53_zone.cisa_dhs_gov.zone_id
+
+  alias {
+    evaluate_target_health = false
+    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
+    zone_id                = "Z33AYJ8TM3BH4J"
+  }
 }
 
-# AAAA‑record alias for IPv6
+# AAAA‑record alias for cyber‑hygiene.cisa.dhs.gov → your ALB (IPv6)
 resource "aws_route53_record" "cyber_hygiene_prod_AAAA" {
   provider = aws.route53resourcechange
 
-  alias {
-    name                   = "crossfeed‑prod‑1638162291.us‑gov‑west‑1.elb.amazonaws.com."
-    evaluate_target_health = false
-    zone_id                = "Z33AYJ8TM3BH4J"
-
-  }
-  name    = "cyber‑hygiene.${data.aws_route53_zone.cisa_dhs_gov.name}"
+  name    = "cyber-hygiene.${data.aws_route53_zone.cisa_dhs_gov.name}"
   type    = "AAAA"
   zone_id = data.aws_route53_zone.cisa_dhs_gov.zone_id
+
+  alias {
+    evaluate_target_health = false
+    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
+    zone_id                = "Z33AYJ8TM3BH4J"
+  }
 }
 
-#CNAME so crossfeed.cyber.dhs.gov → cyber‑hygiene.cisa.dhs.gov
+# CNAME so crossfeed.cyber.dhs.gov → cyber‑hygiene.cisa.dhs.gov
 resource "aws_route53_record" "crossfeed_prod_CNAME" {
   provider = aws.route53resourcechange
 
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  type    = "CNAME"
+  name    = "crossfeed.${data.aws_route53_zone.cyber_dhs_gov.name}"
   ttl     = 300
+  type    = "CNAME"
+  zone_id = data.aws_route53_zone.cyber_dhs_gov.zone_id
 
   records = [
-    "cyber‑hygiene.cisa.dhs.gov.",
+    "cyber-hygiene.cisa.dhs.gov.",
   ]
 }
 

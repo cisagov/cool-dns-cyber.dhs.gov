@@ -6,31 +6,14 @@
 # Prod entries
 # ------------------------------------------------------------------------------
 
-# The hosted_zone_id for the below records comes from https://docs.aws.amazon.com/general/latest/gr/elb.html
-# (ALBs in us-gov-west-1 region)
-resource "aws_route53_record" "crossfeed_prod_A" {
+# CNAME so crossfeed.cyber.dhs.gov → cyber‑hygiene.cisa.dhs.gov
+resource "aws_route53_record" "crossfeed_prod_CNAME" {
   provider = aws.route53resourcechange
 
-  alias {
-    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
-    evaluate_target_health = false
-    zone_id                = "Z33AYJ8TM3BH4J"
-  }
   name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  type    = "A"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_prod_AAAA" {
-  provider = aws.route53resourcechange
-
-  alias {
-    name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
-    evaluate_target_health = false
-    zone_id                = "Z33AYJ8TM3BH4J"
-  }
-  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  type    = "AAAA"
+  records = ["cyber-hygiene.cisa.dhs.gov", ]
+  ttl     = 300
+  type    = "CNAME"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
@@ -95,16 +78,6 @@ resource "aws_route53_record" "crossfeed_prod_api_AAAA" {
   }
   name    = "api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-resource "aws_route53_record" "crossfeed_prod_digicert_CAA" {
-  provider = aws.route53resourcechange
-
-  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["0 issue \"digicert.com\""]
-  ttl     = 3600
-  type    = "CAA"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 

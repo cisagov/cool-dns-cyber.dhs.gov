@@ -7,6 +7,9 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "rsaa_dev_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "dev.rsaa.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -17,6 +20,9 @@ resource "aws_route53_record" "rsaa_dev_CNAME" {
 }
 
 resource "aws_route53_record" "rsaa_dev_piv_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "piv.dev.rsaa.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -27,6 +33,9 @@ resource "aws_route53_record" "rsaa_dev_piv_CNAME" {
 }
 
 resource "aws_route53_record" "rsaa_dev_piv_acme_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "_5d486d2fb58d1753933f5edd460ed038.piv.dev.rsaa.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -41,6 +50,9 @@ resource "aws_route53_record" "rsaa_dev_piv_acme_CNAME" {
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "rsaa_stage_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "staging.rsaa.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -51,6 +63,9 @@ resource "aws_route53_record" "rsaa_stage_CNAME" {
 }
 
 resource "aws_route53_record" "rsaa_stage_piv_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "piv.staging.rsaa.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -61,6 +76,9 @@ resource "aws_route53_record" "rsaa_stage_piv_CNAME" {
 }
 
 resource "aws_route53_record" "rsaa_stage_piv_acme_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "_538a512062a89ebf513e9357efcdc9d0.piv.staging.rsaa.${aws_route53_zone.cyber_dhs_gov.name}"

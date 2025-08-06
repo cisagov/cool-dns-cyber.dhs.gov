@@ -58,9 +58,9 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
     ]
 
     resources = [
-      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:cyber_dhs_gov_bounce",
-      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:cyber_dhs_gov_complaint",
-      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:cyber_dhs_gov_delivery",
+      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}_bounce",
+      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}_complaint",
+      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}_delivery",
     ]
   }
 
@@ -70,7 +70,7 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
     ]
 
     resources = [
-      "arn:aws:sqs:${var.aws_region}:${local.dns_account_id}:cyber_dhs_gov_delivery",
+      "arn:aws:sqs:${var.aws_region}:${local.dns_account_id}:${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}_delivery",
     ]
   }
 }

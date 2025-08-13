@@ -18,17 +18,17 @@ zone.  This role has a trust relationship with the users account.
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.1 |
-| aws | ~> 5.20 |
+| aws | ~> 6.7 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 5.20 |
-| aws.acmresourcechange | ~> 5.20 |
-| aws.dnsprovisionaccount | ~> 5.20 |
-| aws.organizationsreadonly | ~> 5.20 |
-| aws.route53resourcechange | ~> 5.20 |
+| aws | ~> 6.7 |
+| aws.acmresourcechange | ~> 6.7 |
+| aws.dnsprovisionaccount | ~> 6.7 |
+| aws.organizationsreadonly | ~> 6.7 |
+| aws.route53resourcechange | ~> 6.7 |
 | terraform | n/a |
 
 ## Modules ##

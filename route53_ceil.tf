@@ -4,6 +4,9 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "ceil_NS" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "ceil.cyber.dhs.gov"

@@ -10,6 +10,9 @@
 # (ALBs in us-gov-west-1 region)
 
 resource "aws_route53_record" "ready_set_cyber_prod_digicert_CAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -22,6 +25,9 @@ resource "aws_route53_record" "ready_set_cyber_prod_digicert_CAA" {
 # The hosted_zone_id for the below records comes from https://docs.aws.amazon.com/general/latest/gr/elb.html
 # (ALBs in us-gov-west-1 region)
 resource "aws_route53_record" "ready_set_cyber_prod_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -35,6 +41,9 @@ resource "aws_route53_record" "ready_set_cyber_prod_A" {
 }
 
 resource "aws_route53_record" "ready_set_cyber_prod_AAAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -52,6 +61,9 @@ resource "aws_route53_record" "ready_set_cyber_prod_AAAA" {
 # Prod API entries
 # ------------------------------------------------------------------------------
 resource "aws_route53_record" "api_ready_set_cyber_prod_digicert_CAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "api.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -62,6 +74,9 @@ resource "aws_route53_record" "api_ready_set_cyber_prod_digicert_CAA" {
 }
 
 resource "aws_route53_record" "api_ready_set_cyber_prod_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -75,6 +90,9 @@ resource "aws_route53_record" "api_ready_set_cyber_prod_A" {
 }
 
 resource "aws_route53_record" "api_ready_set_cyber_prod_AAAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -92,6 +110,9 @@ resource "aws_route53_record" "api_ready_set_cyber_prod_AAAA" {
 # Staging entries
 # ------------------------------------------------------------------------------
 resource "aws_route53_record" "ready_set_cyber_staging_digicert_CAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "staging.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -102,6 +123,9 @@ resource "aws_route53_record" "ready_set_cyber_staging_digicert_CAA" {
 }
 
 resource "aws_route53_record" "staging_ready_set_cyber_staging_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -115,6 +139,9 @@ resource "aws_route53_record" "staging_ready_set_cyber_staging_A" {
 }
 
 resource "aws_route53_record" "staging_ready_set_cyber_prod_AAAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -132,6 +159,9 @@ resource "aws_route53_record" "staging_ready_set_cyber_prod_AAAA" {
 # Staging API entries
 # ------------------------------------------------------------------------------
 resource "aws_route53_record" "api_ready_set_cyber_staging_digicert_CAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "api.staging.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -142,6 +172,9 @@ resource "aws_route53_record" "api_ready_set_cyber_staging_digicert_CAA" {
 }
 
 resource "aws_route53_record" "api_staging_ready_set_cyber_staging_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -155,6 +188,9 @@ resource "aws_route53_record" "api_staging_ready_set_cyber_staging_A" {
 }
 
 resource "aws_route53_record" "api_staging_ready_set_cyber_staging_AAAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {

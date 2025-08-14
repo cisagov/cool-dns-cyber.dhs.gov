@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
-# Create the IAM policy that allows all of the route53 actions necessary to create and
-# modify resource records in the cyber.dhs.gov zone.
+# Create the IAM policy that allows all of the route53 actions necessary to
+# create and modify resource records in the various cyber.dhs.gov zones.
 # ------------------------------------------------------------------------------
 
 data "aws_iam_policy_document" "route53resourcechange_doc" {
@@ -11,7 +11,10 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
       "route53:ListResourceRecordSets",
     ]
 
-    resources = ["arn:aws:route53:::hostedzone/${aws_route53_zone.cyber_dhs_gov.id}"]
+    resources = [
+      "arn:aws:route53:::hostedzone/${aws_route53_zone.cool_cyber_dhs_gov.id}",
+      "arn:aws:route53:::hostedzone/${aws_route53_zone.cyber_dhs_gov.id}",
+    ]
   }
 
   statement {
@@ -55,9 +58,9 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
     ]
 
     resources = [
-      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:cyber_dhs_gov_bounce",
-      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:cyber_dhs_gov_complaint",
-      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:cyber_dhs_gov_delivery",
+      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}_bounce",
+      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}_complaint",
+      "arn:aws:sns:${var.aws_region}:${local.dns_account_id}:${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}_delivery",
     ]
   }
 
@@ -67,7 +70,7 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
     ]
 
     resources = [
-      "arn:aws:sqs:${var.aws_region}:${local.dns_account_id}:cyber_dhs_gov_delivery",
+      "arn:aws:sqs:${var.aws_region}:${local.dns_account_id}:${replace(aws_route53_zone.cyber_dhs_gov.name, ".", "_")}_delivery",
     ]
   }
 }

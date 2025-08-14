@@ -3,6 +3,11 @@ output "acmresourcechange_role" {
   value       = aws_iam_role.acmresourcechange_role
 }
 
+output "cool_cyber_dhs_gov_zone" {
+  description = "The cool.cyber.dhs.gov public hosted zone."
+  value       = aws_route53_zone.cool_cyber_dhs_gov
+}
+
 output "cyber_dhs_gov_zone" {
   description = "The cyber.dhs.gov public hosted zone."
   value       = aws_route53_zone.cyber_dhs_gov

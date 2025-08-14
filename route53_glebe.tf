@@ -3,6 +3,9 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "drop_ncats_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "drop.ncats.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -13,6 +16,9 @@ resource "aws_route53_record" "drop_ncats_A" {
 }
 
 resource "aws_route53_record" "fw01_ncats_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "fw01.ncats.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -23,6 +29,9 @@ resource "aws_route53_record" "fw01_ncats_A" {
 }
 
 resource "aws_route53_record" "fw02_ncats_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "fw02.ncats.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -33,6 +42,9 @@ resource "aws_route53_record" "fw02_ncats_A" {
 }
 
 resource "aws_route53_record" "vip_ncats_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "vip.ncats.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -43,6 +55,9 @@ resource "aws_route53_record" "vip_ncats_A" {
 }
 
 resource "aws_route53_record" "vpn_ncats_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "vpn.ncats.${aws_route53_zone.cyber_dhs_gov.name}"

@@ -1,6 +1,8 @@
 # cool-dns-cyber.dhs.gov #
 
 [![GitHub Build Status](https://github.com/cisagov/cool-dns-cyber.dhs.gov/workflows/build/badge.svg)](https://github.com/cisagov/cool-dns-cyber.dhs.gov/actions)
+[![License](https://img.shields.io/github/license/cisagov/cool-dns-cyber.dhs.gov)](https://spdx.org/licenses/)
+[![CodeQL](https://github.com/cisagov/cool-dns-cyber.dhs.gov/workflows/CodeQL/badge.svg)](https://github.com/cisagov/cool-dns-cyber.dhs.gov/actions/workflows/codeql-analysis.yml)
 
 This repository contains a Terraform configuration that will provision
 the DNS zone `cyber.dhs.gov` within the COOL.  It creates an IAM role

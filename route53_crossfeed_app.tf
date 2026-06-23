@@ -8,6 +8,9 @@
 
 # CNAME so crossfeed.cyber.dhs.gov → cyber‑hygiene.cisa.dhs.gov
 resource "aws_route53_record" "crossfeed_prod_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -18,6 +21,9 @@ resource "aws_route53_record" "crossfeed_prod_CNAME" {
 }
 
 resource "aws_route53_record" "crossfeed_prod_docs_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "docs.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -28,6 +34,9 @@ resource "aws_route53_record" "crossfeed_prod_docs_CNAME" {
 }
 
 resource "aws_route53_record" "crossfeed_prod_acme_TXT" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "_acme-challenge.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -40,6 +49,9 @@ resource "aws_route53_record" "crossfeed_prod_acme_TXT" {
 }
 
 resource "aws_route53_record" "ready_set_cyber_prod_acme_TXT" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "_acme-challenge.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -56,6 +68,9 @@ resource "aws_route53_record" "ready_set_cyber_prod_acme_TXT" {
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "crossfeed_prod_api_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -69,6 +84,9 @@ resource "aws_route53_record" "crossfeed_prod_api_A" {
 }
 
 resource "aws_route53_record" "crossfeed_prod_api_AAAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -82,6 +100,9 @@ resource "aws_route53_record" "crossfeed_prod_api_AAAA" {
 }
 
 resource "aws_route53_record" "api_crossfeed_prod_digicert_CAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -92,6 +113,9 @@ resource "aws_route53_record" "api_crossfeed_prod_digicert_CAA" {
 }
 
 resource "aws_route53_record" "crossfeed_prod_api_acm_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "_972ea3f08cb5c1e588ee885ef10d0f9e.api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -102,6 +126,9 @@ resource "aws_route53_record" "crossfeed_prod_api_acm_CNAME" {
 }
 
 resource "aws_route53_record" "crossfeed_prod_api_acme_TXT" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "_acme-challenge.api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -118,6 +145,9 @@ resource "aws_route53_record" "crossfeed_prod_api_acme_TXT" {
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "crossfeed_prod_dkim1_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "dzboeznslvck5kqcgnfgrnmg62rig7t2._domainkey.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -128,6 +158,9 @@ resource "aws_route53_record" "crossfeed_prod_dkim1_CNAME" {
 }
 
 resource "aws_route53_record" "crossfeed_prod_dkim2_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "6wpqhy2h6hmcp6dlkvidqucgvmohc65u._domainkey.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -138,6 +171,9 @@ resource "aws_route53_record" "crossfeed_prod_dkim2_CNAME" {
 }
 
 resource "aws_route53_record" "crossfeed_prod_dkim3_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "lcifzdqqdwmyuewt2wrhgecmvsiakiqi._domainkey.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -152,6 +188,9 @@ resource "aws_route53_record" "crossfeed_prod_dkim3_CNAME" {
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "crossfeed_staging_cd_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -165,6 +204,9 @@ resource "aws_route53_record" "crossfeed_staging_cd_A" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_cd_AAAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -180,6 +222,9 @@ resource "aws_route53_record" "crossfeed_staging_cd_AAAA" {
 # The hosted_zone_id for the below records comes from https://docs.aws.amazon.com/general/latest/gr/elb.html
 # (ALBs in us-gov-west-1 region)
 resource "aws_route53_record" "crossfeed_staging_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -193,6 +238,9 @@ resource "aws_route53_record" "crossfeed_staging_A" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_AAAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -206,6 +254,9 @@ resource "aws_route53_record" "crossfeed_staging_AAAA" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_digicert_CAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -216,6 +267,9 @@ resource "aws_route53_record" "crossfeed_staging_digicert_CAA" {
 }
 
 resource "aws_route53_record" "api_crossfeed_staging_digicert_CAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "api.crossfeed.staging.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -226,6 +280,9 @@ resource "aws_route53_record" "api_crossfeed_staging_digicert_CAA" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "_db90da37016cd8f582b6564b096e4e53.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -236,6 +293,9 @@ resource "aws_route53_record" "crossfeed_staging_CNAME" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_cd_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "_778113d42c9d50544ff24081c8690e7b.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -246,6 +306,9 @@ resource "aws_route53_record" "crossfeed_staging_cd_CNAME" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_MX" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -256,6 +319,9 @@ resource "aws_route53_record" "crossfeed_staging_MX" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_TXT" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -270,6 +336,9 @@ resource "aws_route53_record" "crossfeed_staging_TXT" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_acme_TXT" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "_acme-challenge.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -286,6 +355,9 @@ resource "aws_route53_record" "crossfeed_staging_acme_TXT" {
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "crossfeed_integration_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -300,6 +372,9 @@ resource "aws_route53_record" "crossfeed_integration_A" {
 
 
 resource "aws_route53_record" "crossfeed_integration_AAAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -313,6 +388,9 @@ resource "aws_route53_record" "crossfeed_integration_AAAA" {
 }
 
 resource "aws_route53_record" "crossfeed_integration_digicert_letsencrypt_CAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -326,6 +404,9 @@ resource "aws_route53_record" "crossfeed_integration_digicert_letsencrypt_CAA" {
 }
 
 resource "aws_route53_record" "crossfeed_integration_acme_TXT" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "_acme-challenge.integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -342,6 +423,9 @@ resource "aws_route53_record" "crossfeed_integration_acme_TXT" {
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "crossfeed_integration_api_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -355,6 +439,9 @@ resource "aws_route53_record" "crossfeed_integration_api_A" {
 }
 
 resource "aws_route53_record" "crossfeed_integration_api_AAAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -368,6 +455,9 @@ resource "aws_route53_record" "crossfeed_integration_api_AAAA" {
 }
 
 resource "aws_route53_record" "crossfeed_integration_api_TXT" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "_acme-challenge.api.integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -380,6 +470,9 @@ resource "aws_route53_record" "crossfeed_integration_api_TXT" {
 }
 
 resource "aws_route53_record" "crossfeed_integration_api_digicert_letsencrypt_CAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "api.integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -397,6 +490,9 @@ resource "aws_route53_record" "crossfeed_integration_api_digicert_letsencrypt_CA
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "crossfeed_staging_cd_api_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -410,6 +506,9 @@ resource "aws_route53_record" "crossfeed_staging_cd_api_A" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_cd_api_AAAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -423,6 +522,9 @@ resource "aws_route53_record" "crossfeed_staging_cd_api_AAAA" {
 }
 
 resource "aws_route53_record" "crossfeed_api_staging_cd_TXT" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "_acme-challenge.api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -435,6 +537,9 @@ resource "aws_route53_record" "crossfeed_api_staging_cd_TXT" {
 }
 
 resource "aws_route53_record" "api_crossfeed_staging_digicert_letsencrypt_CAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -448,11 +553,18 @@ resource "aws_route53_record" "api_crossfeed_staging_digicert_letsencrypt_CAA" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_cd_TXT" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "_acme-challenge.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
+<<<<<<< HEAD
     "TiafKmY0uf8yr8CPVPt-6OhQB1ySZMI_oG1ksgvGoYc",
+=======
+    "996gfmlMMt4Zf4-3cwZXlCF2BSjeDjpuZ7ALw6K6FB8",
+>>>>>>> a0660451fabd2be17e7ee97850b27d97217524ba
   ]
   ttl     = 3000
   type    = "TXT"
@@ -460,6 +572,9 @@ resource "aws_route53_record" "crossfeed_staging_cd_TXT" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_digicert_letsencrypt_CAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -475,6 +590,9 @@ resource "aws_route53_record" "crossfeed_staging_digicert_letsencrypt_CAA" {
 # The hosted_zone_id for the below records comes from https://docs.aws.amazon.com/general/latest/gr/elb.html
 # (ALBs in us-gov-west-1 region)
 resource "aws_route53_record" "crossfeed_staging_api_A" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -488,6 +606,9 @@ resource "aws_route53_record" "crossfeed_staging_api_A" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_api_AAAA" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   alias {
@@ -501,6 +622,9 @@ resource "aws_route53_record" "crossfeed_staging_api_AAAA" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_api_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "_1cd918a94c59cbd2fdce9df0fdfc980f.api.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -512,6 +636,9 @@ resource "aws_route53_record" "crossfeed_staging_api_CNAME" {
 
 
 resource "aws_route53_record" "crossfeed_staging_cd_api_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "_75f0c44adb3c8ec0023ddc11585227e8.api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -522,6 +649,9 @@ resource "aws_route53_record" "crossfeed_staging_cd_api_CNAME" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_api_acme_TXT" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name = "_acme-challenge.api.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -538,6 +668,9 @@ resource "aws_route53_record" "crossfeed_staging_api_acme_TXT" {
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "crossfeed_staging_dkim1_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "xeabzav4tgtboc5wwbhu2bx25buatdfi._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -548,6 +681,9 @@ resource "aws_route53_record" "crossfeed_staging_dkim1_CNAME" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_dkim2_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "rnscye3ptl2izjxivoefxcrs3xsja2sr._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -558,6 +694,9 @@ resource "aws_route53_record" "crossfeed_staging_dkim2_CNAME" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_dkim3_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "t4n7gyy6rlyzgjfayzgmyq4heevjmq4n._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -568,6 +707,9 @@ resource "aws_route53_record" "crossfeed_staging_dkim3_CNAME" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_cd_dkim1_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "7mu6wejrss5bnby2d4jnnrznr7fk6py6._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -578,6 +720,9 @@ resource "aws_route53_record" "crossfeed_staging_cd_dkim1_CNAME" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_cd_dkim2_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "leycxxpxpvcxgli34u7a3mmvcdgojqdf._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -588,6 +733,9 @@ resource "aws_route53_record" "crossfeed_staging_cd_dkim2_CNAME" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_cd_dkim3_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "zhnkkpsqkxlh6xdjhvs4uluderyicadh._domainkey.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"

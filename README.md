@@ -1,6 +1,8 @@
 # cool-dns-cyber.dhs.gov #
 
 [![GitHub Build Status](https://github.com/cisagov/cool-dns-cyber.dhs.gov/workflows/build/badge.svg)](https://github.com/cisagov/cool-dns-cyber.dhs.gov/actions)
+[![License](https://img.shields.io/github/license/cisagov/cool-dns-cyber.dhs.gov)](https://spdx.org/licenses/)
+[![CodeQL](https://github.com/cisagov/cool-dns-cyber.dhs.gov/workflows/CodeQL/badge.svg)](https://github.com/cisagov/cool-dns-cyber.dhs.gov/actions/workflows/codeql-analysis.yml)
 
 This repository contains a Terraform configuration that will provision
 the DNS zone `cyber.dhs.gov` within the COOL.  It creates an IAM role
@@ -16,31 +18,31 @@ zone.  This role has a trust relationship with the users account.
 ## Requirements ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | terraform | ~> 1.1 |
-| aws | ~> 5.20 |
+| aws | ~> 6.7 |
 
 ## Providers ##
 
 | Name | Version |
-|------|---------|
-| aws | ~> 5.20 |
-| aws.acmresourcechange | ~> 5.20 |
-| aws.dnsprovisionaccount | ~> 5.20 |
-| aws.organizationsreadonly | ~> 5.20 |
-| aws.route53resourcechange | ~> 5.20 |
+| ---- | ------- |
+| aws | ~> 6.7 |
+| aws.acmresourcechange | ~> 6.7 |
+| aws.dnsprovisionaccount | ~> 6.7 |
+| aws.organizationsreadonly | ~> 6.7 |
+| aws.route53resourcechange | ~> 6.7 |
 | terraform | n/a |
 
 ## Modules ##
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | read\_terraform\_state | github.com/cisagov/terraform-state-read-role-tf-module | n/a |
 
 ## Resources ##
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_acm_certificate.rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate) | resource |
 | [aws_acm_certificate_validation.rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate_validation) | resource |
 | [aws_iam_policy.acmresourcechange_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
@@ -68,6 +70,7 @@ zone.  This role has a trust relationship with the users account.
 | [aws_route53_record.api_staging_ready_set_cyber_staging_A](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.api_staging_ready_set_cyber_staging_AAAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.ceil_NS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.cool_NS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_api_staging_cd_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_integration_A](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_integration_AAAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -112,6 +115,8 @@ zone.  This role has a trust relationship with the users account.
 | [aws_route53_record.crossfeed_staging_dkim1_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_staging_dkim2_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_staging_dkim3_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.dev-a_NS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.dev-a_cool_NS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.dkim_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.dkim_dmarc_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.dmarc_MX](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -125,8 +130,6 @@ zone.  This role has a trust relationship with the users account.
 | [aws_route53_record.ready_set_cyber_prod_acme_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.ready_set_cyber_prod_digicert_CAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.ready_set_cyber_staging_digicert_CAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
-| [aws_route53_record.root_A](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
-| [aws_route53_record.root_AAAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.root_CAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.root_MX](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.root_SPF](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -138,6 +141,8 @@ zone.  This role has a trust relationship with the users account.
 | [aws_route53_record.rsaa_stage_piv_acme_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.rules_certificate_validation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.rules_ncats_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.staging-a_NS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.staging-a_cool_NS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.staging_ready_set_cyber_prod_AAAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.staging_ready_set_cyber_staging_A](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.vincent_dev_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -146,6 +151,7 @@ zone.  This role has a trust relationship with the users account.
 | [aws_route53_record.vip_ncats_A](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.vpn_ncats_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.wildcard_report_dmarc_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_zone.cool_cyber_dhs_gov](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_zone) | resource |
 | [aws_route53_zone.cyber_dhs_gov](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_zone) | resource |
 | [aws_ses_domain_dkim.cyber_dhs_gov_dkim](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ses_domain_dkim) | resource |
 | [aws_ses_domain_dkim.dmarc_dkim](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ses_domain_dkim) | resource |
@@ -178,7 +184,7 @@ zone.  This role has a trust relationship with the users account.
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | acmresourcechange\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. | `string` | `"Allows sufficient permissions to modify ACM resources in the DNS account."` | no |
 | acmresourcechange\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. | `string` | `"ACMResourceChange"` | no |
 | additional\_remote\_state\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to read this root module's remote state (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
@@ -200,8 +206,9 @@ zone.  This role has a trust relationship with the users account.
 ## Outputs ##
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | acmresourcechange\_role | IAM role that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. |
+| cool\_cyber\_dhs\_gov\_zone | The cool.cyber.dhs.gov public hosted zone. |
 | cyber\_dhs\_gov\_zone | The cyber.dhs.gov public hosted zone. |
 | route53resourcechange\_role | IAM role that allows sufficient permissions to modify resource records in the cyber.dhs.gov zone. |
 | sesmanagesuppressionlist\_role | IAM role that allows sufficient permissions to manage the AWS SES suppression list. |

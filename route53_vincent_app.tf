@@ -7,6 +7,9 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "vincent_dev_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "dev.vincent.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -17,6 +20,9 @@ resource "aws_route53_record" "vincent_dev_CNAME" {
 }
 
 resource "aws_route53_record" "vincent_dev_cert_verify_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "_21b5e6882ded3469340d1e8fa8fd20a4.dev.vincent.${aws_route53_zone.cyber_dhs_gov.name}"
@@ -32,6 +38,9 @@ resource "aws_route53_record" "vincent_dev_cert_verify_CNAME" {
 # ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "vincent_stage_CNAME" {
+  # Only create this resource in the production workspace
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.route53resourcechange
 
   name    = "staging.vincent.${aws_route53_zone.cyber_dhs_gov.name}"

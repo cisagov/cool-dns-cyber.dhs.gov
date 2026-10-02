@@ -18,14 +18,14 @@ zone.  This role has a trust relationship with the users account.
 ## Requirements ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | terraform | ~> 1.1 |
 | aws | ~> 6.7 |
 
 ## Providers ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | aws | ~> 6.7 |
 | aws.acmresourcechange | ~> 6.7 |
 | aws.dnsprovisionaccount | ~> 6.7 |
@@ -36,13 +36,13 @@ zone.  This role has a trust relationship with the users account.
 ## Modules ##
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | read\_terraform\_state | github.com/cisagov/terraform-state-read-role-tf-module | n/a |
 
 ## Resources ##
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_acm_certificate.rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate) | resource |
 | [aws_acm_certificate_validation.rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate_validation) | resource |
 | [aws_iam_policy.acmresourcechange_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
@@ -184,7 +184,7 @@ zone.  This role has a trust relationship with the users account.
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | acmresourcechange\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. | `string` | `"Allows sufficient permissions to modify ACM resources in the DNS account."` | no |
 | acmresourcechange\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. | `string` | `"ACMResourceChange"` | no |
 | additional\_remote\_state\_account\_ids | A list of account IDs corresponding to additional accounts that should have permission to assume the role to read this root module's remote state (e.g. ["123456789012"]). | `list(string)` | `[]` | no |
@@ -206,7 +206,7 @@ zone.  This role has a trust relationship with the users account.
 ## Outputs ##
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | acmresourcechange\_role | IAM role that allows sufficient permissions to modify ACM (AWS Certificate Manager) resources in the DNS account. |
 | cool\_cyber\_dhs\_gov\_zone | The cool.cyber.dhs.gov public hosted zone. |
 | cyber\_dhs\_gov\_zone | The cyber.dhs.gov public hosted zone. |

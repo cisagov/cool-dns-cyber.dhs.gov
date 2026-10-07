@@ -411,7 +411,7 @@ resource "aws_route53_record" "crossfeed_integration_acme_TXT" {
 
   name = "_acme-challenge.integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "4X3LzqvuCs13-jFRhmjAQrWswlSr1eslqEjH2eCu8U4",
+    "TF_tW_END1iq_j_3Q4Q_DXJP-mzr8zPbdLdPfchXC7c",
   ]
   ttl     = 3000
   type    = "TXT"
@@ -462,7 +462,7 @@ resource "aws_route53_record" "crossfeed_integration_api_TXT" {
 
   name = "_acme-challenge.api.integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "bS0tnzRraHxHy3JXuk4eAchaKTeEs7YAygU2o01yc5M",
+    "YFF6TPl5s6yWqSZbpBW9gyhcVGiZTcxM8sYRf378V3E",
   ]
   ttl     = 3000
   type    = "TXT"
@@ -529,7 +529,7 @@ resource "aws_route53_record" "crossfeed_api_staging_cd_TXT" {
 
   name = "_acme-challenge.api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "rBTAYQKp2CAzMDWTVhjNonGhu5lSD0mkp0TA4FJBICo",
+    "aur7gQoyYboZLIVozm-ry30Z3MvcPt8zFcaSar0lDRw",
   ]
   ttl     = 3000
   type    = "TXT"
@@ -560,7 +560,7 @@ resource "aws_route53_record" "crossfeed_staging_cd_TXT" {
 
   name = "_acme-challenge.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "TiafKmY0uf8yr8CPVPt-6OhQB1ySZMI_oG1ksgvGoYc",
+    "LJ_aX7HJLlmdPxdBjMl7ZvvTOEdn76j0pZxmsSELK3E",
   ]
   ttl     = 3000
   type    = "TXT"
